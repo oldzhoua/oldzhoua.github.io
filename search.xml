@@ -202,10 +202,13 @@
   <entry>
     <title><![CDATA[java测试]]></title>
     <url>%2F2019%2F07%2F11%2Fjava%E6%B5%8B%E8%AF%95%2F</url>
-    <content type="text"><![CDATA[java]]></content>
+    <content type="text"><![CDATA[您好 123public void test()&#123;&#125;]]></content>
       <categories>
-        <category>其他技术</category>
+        <category>java</category>
       </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Blogs-Introduce]]></title>
