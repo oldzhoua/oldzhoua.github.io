@@ -130,7 +130,7 @@
 <meta property="og:site_name" content="周宏伟的个人博客">
 <meta property="og:description" content="@SafeVarargs 挺有意思的一个注解 @SafeVarargs 这是1.7 之后新加入的基本注解. 如例所示，当使用可变数量的参数的时候，而参数的类型又是泛型T的话，就会出现警告。 这个时候，就使用@SafeVarargs来去掉这个警告 @SafeVarargs注解只能用在参数长度可变的方法或构造方法上，且方法必须声明为static或final，否则会出现编译错误。一个方法使用@SafeV">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-14T10:51:49.801Z">
+<meta property="og:updated_time" content="2020-06-15T07:54:15.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java高级_注解">
 <meta name="twitter:description" content="@SafeVarargs 挺有意思的一个注解 @SafeVarargs 这是1.7 之后新加入的基本注解. 如例所示，当使用可变数量的参数的时候，而参数的类型又是泛型T的话，就会出现警告。 这个时候，就使用@SafeVarargs来去掉这个警告 @SafeVarargs注解只能用在参数长度可变的方法或构造方法上，且方法必须声明为static或final，否则会出现编译错误。一个方法使用@SafeV">
@@ -477,7 +477,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">19</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">20</span></a>
 
   </li>
 
@@ -620,7 +620,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-14 18:51:49" itemprop="dateModified" datetime="2020-06-14T18:51:49+08:00">2020-06-14</time>
+                <time title="修改时间：2020-06-15 15:54:15" itemprop="dateModified" datetime="2020-06-15T15:54:15+08:00">2020-06-15</time>
               
             
           </span>
@@ -680,7 +680,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.3k</span>
+                <span title="本文字数">2.4k</span>
               
 
               
@@ -756,6 +756,11 @@
 <p>当没有@Repeatable修饰的时候，注解在同一个位置，只能出现一次</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Names &#123;</span><br><span class="line">	FileType[] value();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Repeatable</span>(Names.class)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> FileType &#123;</span><br><span class="line">	<span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@FileType</span>( <span class="string">".java"</span> )</span><br><span class="line">   <span class="meta">@FileType</span>( <span class="string">".html"</span> )</span><br><span class="line">   <span class="meta">@FileType</span>( <span class="string">".css"</span> )</span><br><span class="line">   <span class="meta">@FileType</span>( <span class="string">".js"</span> )</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span>&#123;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>小唠嗑：</p>
+<blockquote>
+<p>本章到这里就结束了，谢谢耐心看到这里的各位Boss,如果觉得有哪里说的不好的地方，还请高抬贵手多多原谅，不惜指教。</p>
+<p>最后，谢谢！</p>
+</blockquote>
 
       
     </div>
@@ -788,7 +793,7 @@
   <p><span>本文标题:</span><a href="/2020/06/12/Java高级-注解/">Java高级_注解</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 周宏伟 的个人博客">周宏伟</a></p>
   <p><span>发布时间:</span>2020年06月12日 - 16:06</p>
-  <p><span>最后更新:</span>2020年06月14日 - 18:06</p>
+  <p><span>最后更新:</span>2020年06月15日 - 15:06</p>
   <p><span>原始链接:</span><a href="/2020/06/12/Java高级-注解/" title="Java高级_注解">http://oldzhoua.github.io/2020/06/12/Java高级-注解/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://oldzhoua.github.io/2020/06/12/Java高级-注解/" aria-label="复制成功！"></i></span>
   </p>
@@ -1029,7 +1034,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1239,7 +1244,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">127k</span>
+    <span title="站点总字数">133k</span>
   
 
   
@@ -1250,7 +1255,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:55</span>
+    <span title="站点阅读时长">2:01</span>
   
 </div>
 

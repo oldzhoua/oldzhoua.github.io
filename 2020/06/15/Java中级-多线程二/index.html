@@ -122,16 +122,18 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="Blogs-Introduce">
-<meta property="og:url" content="http://oldzhoua.github.io/2019/05/12/Blogs-Introduce/index.html">
+  <meta name="description" content="synchronized 1.怎么创建多线程 2.怎么保证多线程修改同一数据的同步性 3.使用线程池创建多线程   时间问题，先看代码  角色类 12345678910111213141516171819202122232425262728293031323334353637public class Role &amp;#123;	private String name;	private Integer">
+<meta name="keywords" content="java,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中级_多线程二">
+<meta property="og:url" content="http://oldzhoua.github.io/2020/06/15/Java中级-多线程二/index.html">
 <meta property="og:site_name" content="周宏伟的个人博客">
+<meta property="og:description" content="synchronized 1.怎么创建多线程 2.怎么保证多线程修改同一数据的同步性 3.使用线程池创建多线程   时间问题，先看代码  角色类 12345678910111213141516171819202122232425262728293031323334353637public class Role &amp;#123;	private String name;	private Integer">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oldzhoua.github.io/2019/05/12/Blogs-Introduce/introduce.png">
-<meta property="og:updated_time" content="2019-05-12T15:55:22.000Z">
+<meta property="og:updated_time" content="2020-06-15T08:18:31.200Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blogs-Introduce">
-<meta name="twitter:image" content="http://oldzhoua.github.io/2019/05/12/Blogs-Introduce/introduce.png">
+<meta name="twitter:title" content="Java中级_多线程二">
+<meta name="twitter:description" content="synchronized 1.怎么创建多线程 2.怎么保证多线程修改同一数据的同步性 3.使用线程池创建多线程   时间问题，先看代码  角色类 12345678910111213141516171819202122232425262728293031323334353637public class Role &amp;#123;	private String name;	private Integer">
 
 
 
@@ -139,7 +141,7 @@
 
   
   
-  <link rel="canonical" href="http://oldzhoua.github.io/2019/05/12/Blogs-Introduce/">
+  <link rel="canonical" href="http://oldzhoua.github.io/2020/06/15/Java中级-多线程二/">
 
 
 
@@ -149,7 +151,7 @@
   };
 </script>
 
-  <title>Blogs-Introduce | 周宏伟的个人博客</title>
+  <title>Java中级_多线程二 | 周宏伟的个人博客</title>
   
 
 
@@ -558,7 +560,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2019/05/12/Blogs-Introduce/">
+    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/15/Java中级-多线程二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周宏伟">
@@ -575,7 +577,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Blogs-Introduce
+          <h2 class="post-title" itemprop="name headline">Java中级_多线程二
 
               
             
@@ -601,7 +603,7 @@
                 
               
 
-              <time title="创建时间：2019-05-12 23:44:17 / 修改时间：23:55:22" itemprop="dateCreated datePublished" datetime="2019-05-12T23:44:17+08:00">2019-05-12</time>
+              <time title="创建时间：2020-06-15 14:54:36 / 修改时间：16:18:31" itemprop="dateCreated datePublished" datetime="2020-06-15T14:54:36+08:00">2020-06-15</time>
             
 
             
@@ -611,6 +613,24 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -641,7 +661,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1</span>
+                <span title="本文字数">4.9k</span>
               
 
               
@@ -655,7 +675,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -675,7 +695,44 @@
       
 
       
-        <p><img src="/2019/05/12/Blogs-Introduce/introduce.png" alt></p>
+        <h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><blockquote>
+<p>1.怎么创建多线程</p>
+<p>2.怎么保证多线程修改同一数据的同步性</p>
+<p>3.使用线程池创建多线程</p>
+</blockquote>
+<blockquote>
+<p>时间问题，先看代码</p>
+</blockquote>
+<p>角色类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Role</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> Integer hp;</span><br><span class="line">	<span class="keyword">private</span> Integer ack;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 血量减少</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">delhp</span><span class="params">(<span class="keyword">int</span> hp)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (hp &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				System.out.println(<span class="string">"血量为0,等待!"</span>);</span><br><span class="line">				<span class="keyword">this</span>.wait();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		hp = hp - <span class="number">50</span>;</span><br><span class="line">		<span class="keyword">this</span>.notify();</span><br><span class="line">		<span class="keyword">return</span> hp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 血量增加</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">addhp</span><span class="params">(<span class="keyword">int</span> hp)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span> (hp &gt;= <span class="number">999</span>) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				System.out.println(<span class="string">"血量达到上限999,停止恢复!"</span>);</span><br><span class="line">				<span class="keyword">this</span>.wait();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		hp = hp + <span class="number">100</span>;</span><br><span class="line">		<span class="keyword">this</span>.notify();</span><br><span class="line">		<span class="keyword">return</span> hp;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Role role = <span class="keyword">new</span> Role();</span><br><span class="line">		role.setName(<span class="string">"张三"</span>);</span><br><span class="line">		role.setHp(<span class="number">500</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">		<span class="comment">// 1.使用的创建线程的方式启动好几线程</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">					<span class="keyword">int</span> addhp = role.addhp(role.getHp());</span><br><span class="line">					role.setHp(addhp);</span><br><span class="line">					System.out.println(Thread.currentThread().getName() + <span class="string">"线程--加血后:"</span> + role.getHp());</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">					&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;, UUID.randomUUID().toString().substring(<span class="number">0</span>, <span class="number">5</span>));</span><br><span class="line">			t.start();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> m = <span class="number">1</span>;</span><br><span class="line">		<span class="comment">// 1.使用的创建线程的方式启动好几线程</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">			Thread tt = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">					<span class="keyword">int</span> delhp = role.delhp(role.getHp());</span><br><span class="line">					role.setHp(delhp);</span><br><span class="line">					System.out.println(Thread.currentThread().getName() + <span class="string">"线程掉血--后:"</span> + role.getHp());</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">					&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">						e.printStackTrace();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;, UUID.randomUUID().toString().substring(<span class="number">0</span>, <span class="number">5</span>));</span><br><span class="line">			tt.start();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果：</p>
+<p>36668线程–加血后:650<br>36668线程–加血后:600<br>14a84线程掉血–后:600<br>36668线程–加血后:700<br>14a84线程掉血–后:800<br>36668线程–加血后:800<br>36668线程–加血后:900<br>14a84线程掉血–后:1000<br>36668线程–加血后:1000<br>血量达到上限999,停止恢复!<br> 14a84线程掉血–后:950<br>血量达到上限999,停止恢复!</p>
+<p>…..</p>
+</blockquote>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><blockquote>
+<p>线程池类</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThreadPool</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 线程池大小;</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> poolSize;</span><br><span class="line">	<span class="comment">// 任务集合</span></span><br><span class="line">	LinkedList&lt;Runnable&gt; tasks = <span class="keyword">new</span> LinkedList&lt;Runnable&gt;();</span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyThreadPool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		poolSize = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">synchronized</span> (tasks) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; poolSize; i++) &#123;</span><br><span class="line">				<span class="keyword">new</span> TaskThread(<span class="string">"线程"</span> + i).start();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Runnable task)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span> (tasks) &#123;</span><br><span class="line">			tasks.add(task);</span><br><span class="line">			<span class="comment">// 唤醒线程池中等待的线程</span></span><br><span class="line">			tasks.notifyAll();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建线程任务类</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">TaskThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 构造方法</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">TaskThread</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">super</span>(name);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		Runnable task;</span><br><span class="line"></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			System.out.println(<span class="string">"启动:"</span> + <span class="keyword">this</span>.getName());</span><br><span class="line">			<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">				<span class="keyword">synchronized</span> (tasks) &#123;</span><br><span class="line">					<span class="keyword">while</span> (tasks.isEmpty()) &#123;</span><br><span class="line">						System.out.println(<span class="string">"没有任务!休息"</span>);</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							tasks.wait();</span><br><span class="line">						&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="comment">// 从线程池中拿一个线程出来</span></span><br><span class="line">					task = tasks.removeLast();</span><br><span class="line">					<span class="comment">// 唤醒所有线程</span></span><br><span class="line">					tasks.notifyAll();</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(<span class="keyword">this</span>.getName() + <span class="string">"接到任务,执行"</span>);</span><br><span class="line">				task.run();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>测试</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//		ThreadPool pool = new ThreadPool();</span></span><br><span class="line">		MyThreadPool pool = <span class="keyword">new</span> MyThreadPool();</span><br><span class="line">		Role role = <span class="keyword">new</span> Role();</span><br><span class="line">		role.setName(<span class="string">"张三"</span>);</span><br><span class="line">		role.setHp(<span class="number">500</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">			Runnable task = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">					<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">						<span class="keyword">int</span> addhp = role.addhp(role.getHp());</span><br><span class="line">						role.setHp(addhp);</span><br><span class="line">						System.out.println(Thread.currentThread().getName() + <span class="string">"线程--加血后:"</span> + role.getHp());</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">						&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">			pool.add(task);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">			Runnable task = <span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">					<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">						<span class="keyword">int</span> delhp = role.delhp(role.getHp());</span><br><span class="line">						role.setHp(delhp);</span><br><span class="line">						System.out.println(Thread.currentThread().getName() + <span class="string">"线程掉血--后:"</span> + role.getHp());</span><br><span class="line">						<span class="keyword">try</span> &#123;</span><br><span class="line">							Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">						&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">							e.printStackTrace();</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line">			pool.add(task);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果:</p>
+<p>…</p>
+<p>线程9接到任务,执行<br>线程7接到任务,执行<br>线程8接到任务,执行<br>线程7线程–加血后:800<br>线程9线程–加血后:700<br>线程6线程–加血后:600<br>没有任务!休息<br>线程1接到任务,执行<br>没有任务!休息<br>线程8线程–加血后:900<br>没有任务!休息<br>线程1线程–加血后:1000<br>没有任务!休息<br>线程2接到任务,执行<br>线程5接到任务,执行</p>
+<p>…</p>
+</blockquote>
+<p>小唠嗑：</p>
+<blockquote>
+<p>本章到这里就结束了，谢谢耐心看到这里的各位Boss,如果觉得有哪里说的不好的地方，还请高抬贵手多多原谅，不惜指教。</p>
+<p>最后，谢谢！</p>
+</blockquote>
 
       
     </div>
@@ -699,35 +756,6 @@
 <div>
      
        
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-  
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2019/05/12/Blogs-Introduce/">Blogs-Introduce</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 周宏伟 的个人博客">周宏伟</a></p>
-  <p><span>发布时间:</span>2019年05月12日 - 23:05</p>
-  <p><span>最后更新:</span>2019年05月12日 - 23:05</p>
-  <p><span>原始链接:</span><a href="/2019/05/12/Blogs-Introduce/" title="Blogs-Introduce">http://oldzhoua.github.io/2019/05/12/Blogs-Introduce/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://oldzhoua.github.io/2019/05/12/Blogs-Introduce/" aria-label="复制成功！"></i></span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-</div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    $(".fa-clipboard").click(function(){
-      clipboard.on('success', function(){
-        swal({   
-          title: "",   
-          text: '复制成功',
-          icon: "success", 
-          showConfirmButton: true
-          });
-    });
-    });  
-</script>
-
      
      </div>
 
@@ -788,7 +816,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://oldzhoua.github.io/2019/05/12/Blogs-Introduce/" title="Blogs-Introduce">http://oldzhoua.github.io/2019/05/12/Blogs-Introduce/</a>
+    <a href="http://oldzhoua.github.io/2020/06/15/Java中级-多线程二/" title="Java中级_多线程二">http://oldzhoua.github.io/2020/06/15/Java中级-多线程二/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY</span> 许可协议。转载请注明出处！</li>
@@ -798,6 +826,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+        </div>
       
 
       
@@ -860,8 +896,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/12/hexo-github-搭建博客/" rel="next" title="hexo github 搭建博客">
-                <i class="fa fa-chevron-left"></i> hexo github 搭建博客
+              <a href="/2020/06/14/问题-springboot2/" rel="next" title="问题_springboot2">
+                <i class="fa fa-chevron-left"></i> 问题_springboot2
               </a>
             
           </div>
@@ -869,10 +905,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/11/java测试/" rel="prev" title="java测试">
-                java测试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -916,8 +948,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1091,6 +1132,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized"><span class="nav-number">1.</span> <span class="nav-text">synchronized</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池"><span class="nav-number">2.</span> <span class="nav-text">线程池</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
