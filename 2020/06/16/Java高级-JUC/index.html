@@ -122,16 +122,18 @@
 
 
 
-  <meta name="description" content="我喜欢的都很贵，所以我才要努力争取">
-<meta property="og:type" content="website">
-<meta property="og:title" content="周宏伟的个人博客">
-<meta property="og:url" content="http://oldzhoua.github.io/tags/位运算/index.html">
+  <meta name="description" content="并发 java.util.concurrent. 并发—-&amp;gt;充分利用CPU的资源 java.util.concurrent.atomic  原子性 java.util.concurrent.locks  锁">
+<meta name="keywords" content="java,JUC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java高级_JUC">
+<meta property="og:url" content="http://oldzhoua.github.io/2020/06/16/Java高级-JUC/index.html">
 <meta property="og:site_name" content="周宏伟的个人博客">
-<meta property="og:description" content="我喜欢的都很贵，所以我才要努力争取">
+<meta property="og:description" content="并发 java.util.concurrent. 并发—-&amp;gt;充分利用CPU的资源 java.util.concurrent.atomic  原子性 java.util.concurrent.locks  锁">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-16T11:05:59.404Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周宏伟的个人博客">
-<meta name="twitter:description" content="我喜欢的都很贵，所以我才要努力争取">
+<meta name="twitter:title" content="Java高级_JUC">
+<meta name="twitter:description" content="并发 java.util.concurrent. 并发—-&amp;gt;充分利用CPU的资源 java.util.concurrent.atomic  原子性 java.util.concurrent.locks  锁">
 
 
 
@@ -139,7 +141,7 @@
 
   
   
-  <link rel="canonical" href="http://oldzhoua.github.io/tags/位运算/">
+  <link rel="canonical" href="http://oldzhoua.github.io/2020/06/16/Java高级-JUC/">
 
 
 
@@ -149,7 +151,7 @@
   };
 </script>
 
-  <title>标签: 位运算 | 周宏伟的个人博客</title>
+  <title>Java高级_JUC | 周宏伟的个人博客</title>
   
 
 
@@ -197,7 +199,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -425,7 +427,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -536,107 +538,451 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>位运算<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/16/Java高级-JUC/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周宏伟">
+      <meta itemprop="description" content="我喜欢的都很贵，所以我才要努力争取">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周宏伟的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2020/06/12/Java基础/" itemprop="url">
-            
-              <span itemprop="name">Java基础</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Java高级_JUC
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-06-12T15:52:03+08:00" content="2020-06-12">
-          06-12
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-16 18:27:25 / 修改时间：19:05:59" itemprop="dateCreated datePublished" datetime="2020-06-16T18:27:25+08:00">2020-06-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">5.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h2><ol>
+<li>java.util.concurrent. 并发—-&gt;充分利用CPU的资源</li>
+<li>java.util.concurrent.atomic  原子性</li>
+<li>java.util.concurrent.locks  锁</li>
+</ol>
+<a id="more"></a>
+<p>对于锁,可以去看一下&lt;Java中级-多线程一二三&gt;,以后在整理好,抱歉</p>
+<p>现在主要讲的是并发下,集合 List, Set , Map的安全问题</p>
+<h2 id="对于List集合"><a href="#对于List集合" class="headerlink" title="对于List集合"></a>对于List集合</h2><p>先看一个<code>List&lt;String&gt; list = new ArrayList&lt;String&gt;();</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">listSate</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		<span class="comment">// 单线程添加数据</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			list.add(UUID.randomUUID().toString().substring(<span class="number">0</span>, <span class="number">3</span>));</span><br><span class="line">			System.out.println(list);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"单线程正常添加10个数据:"</span> + list.size());</span><br><span class="line">		System.out.println(<span class="string">"==========================================="</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 多线程添加数据</span></span><br><span class="line">		List&lt;String&gt; listThread = <span class="keyword">new</span> ArrayList&lt;String&gt;(); <span class="comment">// 不安全</span></span><br><span class="line">		Thread[] ts = <span class="keyword">new</span> Thread[<span class="number">10</span>];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				listThread.add(UUID.randomUUID().toString().substring(<span class="number">0</span>, <span class="number">3</span>));</span><br><span class="line">				System.out.println(Thread.currentThread().getId() + <span class="string">"多线程添加数据: \n"</span> + listThread);</span><br><span class="line">			&#125;, <span class="string">"线程"</span> + i);</span><br><span class="line">			ts[i] = t;</span><br><span class="line">			t.start();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (Thread t : ts) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				t.join();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"多线程正常添加10个数据:"</span> + listThread.size());</span><br><span class="line">		System.out.println(<span class="string">"多线程正常添加10个数据:"</span> + listThread);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果:</p>
+<p>[67a]<br>[67a, 501]<br>[67a, 501, a85]<br>[67a, 501, a85, 934]<br>[67a, 501, a85, 934, e9d]<br>[67a, 501, a85, 934, e9d, e6c]<br>[67a, 501, a85, 934, e9d, e6c, 402]<br>[67a, 501, a85, 934, e9d, e6c, 402, 016]<br>[67a, 501, a85, 934, e9d, e6c, 402, 016, 24b]<br>[67a, 501, a85, 934, e9d, e6c, 402, 016, 24b, be6]</p>
+<p>单线程正常添加10个数据:10</p>
+<p>15多线程添加数据:<br>[8a0, bfe]<br>14多线程添加数据:<br>[8a0, bfe]<br>16多线程添加数据:<br>[8a0, bfe, 556]<br>17多线程添加数据:<br>[8a0, bfe, 556, 8f9, ef1]<br>Exception in thread “线程4” Exception in thread “线程7” Exception in thread “线程8” 19多线程添加数据:<br>[8a0, bfe, 556, 8f9, ef1, ac1]<br>23多线程添加数据:<br>[8a0, bfe, 556, 8f9, ef1, ac1, e8d, 512, 348]<br>20多线程添加数据:<br>[8a0, bfe, 556, 8f9, ef1, ac1, e8d, 512, 348, 444]<br>java.util.ConcurrentModificationException<br>    at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:901)<br>    at java.util.ArrayList$Itr.next(ArrayList.java:851)<br>    at java.util.AbstractCollection.toString(AbstractCollection.java:461)</p>
+</blockquote>
+<p>最后发现,在多线程操作的时候,报了ConcurrentModificationException异常 ( 翻译过来就是 <strong>并发修改异常</strong> )</p>
+<p>解决办法:</p>
+<p>三种:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; listThread =Collections.synchronizedList(<span class="keyword">new</span> ArrayList&lt;String&gt;()); <span class="comment">// 安全</span></span><br><span class="line">List&lt;String&gt; listThread = <span class="keyword">new</span> Vector&lt;String&gt;(); <span class="comment">// 安全</span></span><br><span class="line">List&lt;String&gt; listThread = <span class="keyword">new</span> CopyOnWriteArrayList&lt;String&gt;(); <span class="comment">// 安全</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>第一种: 采用集合工具类提供的安全方法Collections.synchronizedList()</p>
+<p>第二种是使用List 的子类 Vector 是支持同步的</p>
+<p>第三种是使用CopyOnWriteArrayList类</p>
+</blockquote>
+<blockquote>
+<p>结果就是 :不报异常</p>
+</blockquote>
+<h2 id="对于Set集合"><a href="#对于Set集合" class="headerlink" title="对于Set集合"></a>对于Set集合</h2><p>先看一个:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetSafe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			set.add(UUID.randomUUID().toString().substring(<span class="number">0</span>, <span class="number">3</span>));</span><br><span class="line">			System.out.println(set);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"单线程正常添加10个数据:"</span> + set.size());</span><br><span class="line">		System.out.println(<span class="string">"==========================================="</span>);</span><br><span class="line"></span><br><span class="line">		/Set&lt;String&gt; setTread = <span class="keyword">new</span> HashSet&lt;String&gt;(); <span class="comment">// 不安全</span></span><br><span class="line">		Thread[] ts = <span class="keyword">new</span> Thread[<span class="number">10</span>];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				setTread.add(UUID.randomUUID().toString().substring(<span class="number">0</span>, <span class="number">3</span>));</span><br><span class="line">				System.out.println(Thread.currentThread().getId() + <span class="string">"多线程添加数据: \n"</span> + setTread);</span><br><span class="line">			&#125;, <span class="string">"线程"</span> + i);</span><br><span class="line">			ts[i] = t;</span><br><span class="line">			t.start();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (Thread t : ts) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				t.join();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"多线程正常添加10个数据:"</span> + setTread.size());</span><br><span class="line">		System.out.println(<span class="string">"多线程正常添加10个数据:"</span> + setTread);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果:</p>
+<p>同样是抛出异常</p>
+<p> <strong>ConcurrentModificationException</strong></p>
+</blockquote>
+<p>解决办法:</p>
+<p>两种:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; setTread = Collections.synchronizedSet(new HashSet&lt;String&gt;()); // 安全</span><br><span class="line">Set&lt;String&gt; setTread = new CopyOnWriteArraySet&lt;String&gt;(); // 安全</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>第一种: 采用Collections集合工具类提供的Collections.synchronizedSet()方法</p>
+<p>第二章:采用CopyOnWriteArraySet类</p>
+</blockquote>
+<blockquote>
+<p>结果就是不报异常</p>
+</blockquote>
+<h2 id="对于Map集合"><a href="#对于Map集合" class="headerlink" title="对于Map集合"></a>对于Map集合</h2><p>先看一个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">mapSafe</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			map.put(Thread.currentThread().getName(), UUID.randomUUID().toString().substring(<span class="number">0</span>, <span class="number">3</span>));</span><br><span class="line">			System.out.println(map);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"单线程正常添加10个数据:"</span> + map.size());</span><br><span class="line">		System.out.println(<span class="string">"==========================================="</span>);</span><br><span class="line"></span><br><span class="line">		Map&lt;String, String&gt; mapTread = <span class="keyword">new</span> HashMap&lt;String, String&gt;(); 不安全</span><br><span class="line">		Thread[] ts = <span class="keyword">new</span> Thread[<span class="number">10</span>];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			Thread t = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				mapTread.put(Thread.currentThread().getName(), UUID.randomUUID().toString().substring(<span class="number">0</span>, <span class="number">3</span>));</span><br><span class="line">				System.out.println(mapTread.values());</span><br><span class="line">			&#125;, <span class="string">"线程"</span> + i);</span><br><span class="line">			ts[i] = t;</span><br><span class="line">			t.start();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (Thread t : ts) &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				t.join();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"多线程正常添加10个数据:"</span> + mapTread.size());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果:</p>
+<p>报异常</p>
+</blockquote>
+<p>解决办法两个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; mapTread = <span class="keyword">new</span> Hashtable&lt;String, String&gt;(); <span class="comment">// 安全</span></span><br><span class="line">Map&lt;String, String&gt; mapTread = Collections.synchronizedMap(<span class="keyword">new</span> HashMap&lt;String, String&gt;()); <span class="comment">// 安全</span></span><br><span class="line">Map&lt;String, String&gt; mapTread = <span class="keyword">new</span> ConcurrentHashMap&lt;String, String&gt;(); <span class="comment">// 安全</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>第一种:采用Map的子类HashTable</p>
+<p>第二种:采用集合工具类Collections.synchronizedMap()</p>
+<p>第三种:采用 ConcurrentHashMap 类</p>
+</blockquote>
+<p>小唠嗑：</p>
+<blockquote>
+<p>本章到这里就结束了，谢谢耐心看到这里的各位Boss,如果觉得有哪里说的不好的地方，还请高抬贵手多多原谅，不惜指教。</p>
+<p>最后，谢谢！</p>
+</blockquote>
 
       
     </div>
 
+    
+
+    
+    
+    
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #fc6423;font-size:16px;">---本文结束<i class="fa fa-heart"></i>感谢您的阅读!---</div>
+    
+</div>
+  
+</div>
+
+<div>
+     
+       
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/06/16/Java高级-JUC/">Java高级_JUC</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 周宏伟 的个人博客">周宏伟</a></p>
+  <p><span>发布时间:</span>2020年06月16日 - 18:06</p>
+  <p><span>最后更新:</span>2020年06月16日 - 19:06</p>
+  <p><span>原始链接:</span><a href="/2020/06/16/Java高级-JUC/" title="Java高级_JUC">http://oldzhoua.github.io/2020/06/16/Java高级-JUC/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://oldzhoua.github.io/2020/06/16/Java高级-JUC/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+     
+     </div>
+
+
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/weixin.png" alt style="text-align: center;width: 400px;">
+  <br>
+  <div>欢迎订阅我的公众号,及时推送最新文章！</div>
+</div>
+<!--微信二维码-->
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>Donate comment here</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/weixinpay.png" alt="周宏伟 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>周宏伟</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://oldzhoua.github.io/2020/06/16/Java高级-JUC/" title="Java高级_JUC">http://oldzhoua.github.io/2020/06/16/Java高级-JUC/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/JUC/" rel="tag"># JUC</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+              <div>
+                
+
+<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
+
+
+  
+
+
+<div class="likely">
+	
+ 	 	<div class="twitter">Tweet</div>
+	
+ 	 	<div class="facebook">Share</div>
+	
+ 	 	<div class="linkedin">Link</div>
+	
+ 	 	<div class="gplus">Plus</div>
+	
+ 	 	<div class="vkontakte">Share</div>
+	
+ 	 	<div class="odnoklassniki">Class</div>
+	
+ 	 	<div class="telegram">Send</div>
+	
+ 	 	<div class="whatsapp">Send</div>
+	
+ 	 	<div class="pinterest">Pin</div>
+	
+</div>
+
+              </div>
+            
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/16/Java中级-多线程三/" rel="next" title="Java中级_多线程三">
+                <i class="fa fa-chevron-left"></i> Java中级_多线程三
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -656,8 +1002,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -833,6 +1188,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#并发"><span class="nav-number">1.</span> <span class="nav-text">并发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于List集合"><span class="nav-number">2.</span> <span class="nav-text">对于List集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于Set集合"><span class="nav-number">3.</span> <span class="nav-text">对于Set集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于Map集合"><span class="nav-number">4.</span> <span class="nav-text">对于Map集合</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1031,6 +1403,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -1062,6 +1438,8 @@
 
   
 
+
+  
 
 
   
@@ -1427,7 +1805,7 @@
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1.0.0/bookmark.min.js"></script>
   <script>
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#更多");
   
   </script>
 
