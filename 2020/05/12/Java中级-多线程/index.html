@@ -130,7 +130,7 @@
 <meta property="og:site_name" content="周宏伟的个人博客">
 <meta property="og:description" content="线程 线程是进程中的一个实体 是被系统独立调度和分配的基本单位  一个标准的线程:  线程ID, 当前指令指针(PC) 寄存器集合 堆栈  Java默认线程有两个:  main()主线程 GC线程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-15T07:54:17.153Z">
+<meta property="og:updated_time" content="2020-06-16T04:02:43.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中级_多线程">
 <meta name="twitter:description" content="线程 线程是进程中的一个实体 是被系统独立调度和分配的基本单位  一个标准的线程:  线程ID, 当前指令指针(PC) 寄存器集合 堆栈  Java默认线程有两个:  main()主线程 GC线程">
@@ -477,7 +477,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">20</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">21</span></a>
 
   </li>
 
@@ -620,7 +620,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-15 15:54:17" itemprop="dateModified" datetime="2020-06-15T15:54:17+08:00">2020-06-15</time>
+                <time title="修改时间：2020-06-16 12:02:43" itemprop="dateModified" datetime="2020-06-16T12:02:43+08:00">2020-06-16</time>
               
             
           </span>
@@ -757,6 +757,10 @@
 <h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><blockquote>
 <p>实现Runnable接口,实现Callable和继承Thread可以得到一个线程类</p>
 </blockquote>
+<blockquote>
+<p>为什么使用多线程?</p>
+<p>为了解决负载均衡问题,充分利用单核的CPU资源.为了提高CPU的使用率,</p>
+</blockquote>
 <h3 id="继承Thread方式"><a href="#继承Thread方式" class="headerlink" title="继承Thread方式"></a>继承Thread方式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123; <span class="comment">// 线程主体</span></span><br><span class="line">	<span class="keyword">private</span> String title;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ThreadTest</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.title = title;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123; <span class="comment">// 线程主方法</span></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">			System.out.println(title + <span class="string">"--继承Thread类似创建线程"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// Thread</span></span><br><span class="line">		ThreadTest t1 = <span class="keyword">new</span> ThreadTest(<span class="string">"线程A"</span>);</span><br><span class="line">		ThreadTest t2 = <span class="keyword">new</span> ThreadTest(<span class="string">"线程B"</span>);</span><br><span class="line">		ThreadTest t3 = <span class="keyword">new</span> ThreadTest(<span class="string">"线程C"</span>);</span><br><span class="line">		t1.start(); <span class="comment">// 在多线程操作之中，使用start()方法启动多线程的操作是需要进行操作系统函数调用的</span></span><br><span class="line">		t2.start();</span><br><span class="line">		t3.start();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -839,7 +843,7 @@
   <p><span>本文标题:</span><a href="/2020/05/12/Java中级-多线程/">Java中级_多线程</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 周宏伟 的个人博客">周宏伟</a></p>
   <p><span>发布时间:</span>2020年05月12日 - 16:05</p>
-  <p><span>最后更新:</span>2020年06月15日 - 15:06</p>
+  <p><span>最后更新:</span>2020年06月16日 - 12:06</p>
   <p><span>原始链接:</span><a href="/2020/05/12/Java中级-多线程/" title="Java中级_多线程">http://oldzhoua.github.io/2020/05/12/Java中级-多线程/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://oldzhoua.github.io/2020/05/12/Java中级-多线程/" aria-label="复制成功！"></i></span>
   </p>
@@ -1080,7 +1084,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1290,7 +1294,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">133k</span>
+    <span title="站点总字数">145k</span>
   
 
   
@@ -1301,7 +1305,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:01</span>
+    <span title="站点阅读时长">2:12</span>
   
 </div>
 

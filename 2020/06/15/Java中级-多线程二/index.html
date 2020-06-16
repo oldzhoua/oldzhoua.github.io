@@ -122,18 +122,18 @@
 
 
 
-  <meta name="description" content="synchronized 1.怎么创建多线程 2.怎么保证多线程修改同一数据的同步性 3.使用线程池创建多线程   时间问题，先看代码  角色类 12345678910111213141516171819202122232425262728293031323334353637public class Role &amp;#123;	private String name;	private Integer">
+  <meta name="description" content="synchronized 1.怎么创建多线程 2.怎么保证多线程修改同一数据的同步性 3.使用线程池创建多线程">
 <meta name="keywords" content="java,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java中级_多线程二">
 <meta property="og:url" content="http://oldzhoua.github.io/2020/06/15/Java中级-多线程二/index.html">
 <meta property="og:site_name" content="周宏伟的个人博客">
-<meta property="og:description" content="synchronized 1.怎么创建多线程 2.怎么保证多线程修改同一数据的同步性 3.使用线程池创建多线程   时间问题，先看代码  角色类 12345678910111213141516171819202122232425262728293031323334353637public class Role &amp;#123;	private String name;	private Integer">
+<meta property="og:description" content="synchronized 1.怎么创建多线程 2.怎么保证多线程修改同一数据的同步性 3.使用线程池创建多线程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-15T08:31:06.092Z">
+<meta property="og:updated_time" content="2020-06-16T03:59:33.890Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中级_多线程二">
-<meta name="twitter:description" content="synchronized 1.怎么创建多线程 2.怎么保证多线程修改同一数据的同步性 3.使用线程池创建多线程   时间问题，先看代码  角色类 12345678910111213141516171819202122232425262728293031323334353637public class Role &amp;#123;	private String name;	private Integer">
+<meta name="twitter:description" content="synchronized 1.怎么创建多线程 2.怎么保证多线程修改同一数据的同步性 3.使用线程池创建多线程">
 
 
 
@@ -477,7 +477,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">20</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">21</span></a>
 
   </li>
 
@@ -603,12 +603,24 @@
                 
               
 
-              <time title="创建时间：2020-06-15 14:54:36 / 修改时间：16:31:06" itemprop="dateCreated datePublished" datetime="2020-06-15T14:54:36+08:00">2020-06-15</time>
+              <time title="创建时间：2020-06-15 14:54:36" itemprop="dateCreated datePublished" datetime="2020-06-15T14:54:36+08:00">2020-06-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-06-16 11:59:33" itemprop="dateModified" datetime="2020-06-16T11:59:33+08:00">2020-06-16</time>
               
             
           </span>
@@ -661,7 +673,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.9k</span>
+                <span title="本文字数">5.2k</span>
               
 
               
@@ -675,7 +687,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -700,6 +712,7 @@
 <p>2.怎么保证多线程修改同一数据的同步性</p>
 <p>3.使用线程池创建多线程</p>
 </blockquote>
+<a id="more"></a>
 <blockquote>
 <p>时间问题，先看代码</p>
 </blockquote>
@@ -728,8 +741,24 @@
 <p>线程9接到任务,执行<br>线程7接到任务,执行<br>线程8接到任务,执行<br>线程7线程–加血后:800<br>线程9线程–加血后:700<br>线程6线程–加血后:600<br>没有任务!休息<br>线程1接到任务,执行<br>没有任务!休息<br>线程8线程–加血后:900<br>没有任务!休息<br>线程1线程–加血后:1000<br>没有任务!休息<br>线程2接到任务,执行<br>线程5接到任务,执行</p>
 <p>…</p>
 </blockquote>
+<p>最后看一下,wait sleep 区别</p>
+<blockquote>
+<p>类不同 :</p>
+<p>​    wait -&gt; object</p>
+<p>​    sleep: Thread</p>
+<p>锁的释放:</p>
+<p>​    wait -&gt; 会释放锁</p>
+<p>​     sleep -&gt; 抱着锁睡觉</p>
+<p>作用范围:</p>
+<p>​    wait :同步代码块中</p>
+<p>​    sleep: 没有限制</p>
+<p>异常:</p>
+<p>​    wait: 不需要捕获异常</p>
+<p>​    sleep: 需要捕获异常</p>
+</blockquote>
 <p>小唠嗑：</p>
 <blockquote>
+<p>想更加深入的了解多线程的使用,进看《Java中级_多线程三》篇</p>
 <p>本章到这里就结束了，谢谢耐心看到这里的各位Boss,如果觉得有哪里说的不好的地方，还请高抬贵手多多原谅，不惜指教。</p>
 <p>最后，谢谢！</p>
 </blockquote>
@@ -765,7 +794,7 @@
   <p><span>本文标题:</span><a href="/2020/06/15/Java中级-多线程二/">Java中级_多线程二</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 周宏伟 的个人博客">周宏伟</a></p>
   <p><span>发布时间:</span>2020年06月15日 - 14:06</p>
-  <p><span>最后更新:</span>2020年06月15日 - 16:06</p>
+  <p><span>最后更新:</span>2020年06月16日 - 11:06</p>
   <p><span>原始链接:</span><a href="/2020/06/15/Java中级-多线程二/" title="Java中级_多线程二">http://oldzhoua.github.io/2020/06/15/Java中级-多线程二/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://oldzhoua.github.io/2020/06/15/Java中级-多线程二/" aria-label="复制成功！"></i></span>
   </p>
@@ -935,6 +964,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/06/16/Java中级-多线程三/" rel="prev" title="Java中级_多线程三">
+                Java中级_多线程三 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -1004,7 +1037,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1214,7 +1247,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">133k</span>
+    <span title="站点总字数">145k</span>
   
 
   
@@ -1225,7 +1258,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:01</span>
+    <span title="站点阅读时长">2:12</span>
   
 </div>
 
