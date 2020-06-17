@@ -122,16 +122,18 @@
 
 
 
-  <meta name="description" content="我喜欢的都很贵，所以我才要努力争取">
-<meta property="og:type" content="website">
-<meta property="og:title" content="周宏伟的个人博客">
-<meta property="og:url" content="http://oldzhoua.github.io/tags/I-O/index.html">
+  <meta name="description" content="CountDownLatch // 计数器 CyclicBarrier // 循环阻塞 Semaphore //信号量  CountDownLatch java.util.concurrent    Class CountDownLatch java.lang.Object        java.util.concurrent.CountDownLatch   public class Cou">
+<meta name="keywords" content="java,JUC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java高级-JUC二-常用类">
+<meta property="og:url" content="http://oldzhoua.github.io/2020/06/17/Java高级-JUC二-常用类/index.html">
 <meta property="og:site_name" content="周宏伟的个人博客">
-<meta property="og:description" content="我喜欢的都很贵，所以我才要努力争取">
+<meta property="og:description" content="CountDownLatch // 计数器 CyclicBarrier // 循环阻塞 Semaphore //信号量  CountDownLatch java.util.concurrent    Class CountDownLatch java.lang.Object        java.util.concurrent.CountDownLatch   public class Cou">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-17T04:54:16.655Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周宏伟的个人博客">
-<meta name="twitter:description" content="我喜欢的都很贵，所以我才要努力争取">
+<meta name="twitter:title" content="Java高级-JUC二-常用类">
+<meta name="twitter:description" content="CountDownLatch // 计数器 CyclicBarrier // 循环阻塞 Semaphore //信号量  CountDownLatch java.util.concurrent    Class CountDownLatch java.lang.Object        java.util.concurrent.CountDownLatch   public class Cou">
 
 
 
@@ -139,7 +141,7 @@
 
   
   
-  <link rel="canonical" href="http://oldzhoua.github.io/tags/I-O/">
+  <link rel="canonical" href="http://oldzhoua.github.io/2020/06/17/Java高级-JUC二-常用类/">
 
 
 
@@ -149,7 +151,7 @@
   };
 </script>
 
-  <title>标签: I/O | 周宏伟的个人博客</title>
+  <title>Java高级-JUC二-常用类 | 周宏伟的个人博客</title>
   
 
 
@@ -197,7 +199,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -425,7 +427,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -536,107 +538,459 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>I/O<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/17/Java高级-JUC二-常用类/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周宏伟">
+      <meta itemprop="description" content="我喜欢的都很贵，所以我才要努力争取">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周宏伟的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2020/06/12/Java中级/" itemprop="url">
-            
-              <span itemprop="name">Java中级</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Java高级-JUC二-常用类
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-06-12T15:57:42+08:00" content="2020-06-12">
-          06-12
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-17 12:06:12 / 修改时间：12:54:16" itemprop="dateCreated datePublished" datetime="2020-06-17T12:06:12+08:00">2020-06-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>CountDownLatch // 计数器</p>
+<p>CyclicBarrier // 循环阻塞</p>
+<p>Semaphore //信号量</p>
+</blockquote>
+<h2 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h2><blockquote>
+<p>java.util.concurrent<br>    Class CountDownLatch</p>
+<p>java.lang.Object<br>        java.util.concurrent.CountDownLatch </p>
+<hr>
+<p>public class CountDownLatch<br>extends Object</p>
+<p>解释: 允许一个或多个线程等待直到在其他线程中执行的一组操作完成的同步辅助。</p>
+</blockquote>
+<p>官方解释: <a id="more"></a></p>
+<blockquote>
+<p>A <code>CountDownLatch</code>用给定的<em>计数</em>初始化。 <a href="../../../java/util/concurrent/CountDownLatch.html#await--"><code>await</code></a>方法阻塞，直到由于<a href="../../../java/util/concurrent/CountDownLatch.html#countDown--"><code>countDown()</code></a>方法的<a href="../../../java/util/concurrent/CountDownLatch.html#countDown--">调用</a>而导致当前计数达到零，之后所有等待线程被释放，并且任何后续的<code>await</code>  <a href="../../../java/util/concurrent/CountDownLatch.html#await--">调用立即</a>返回。  这是一个一次性的现象 - 计数无法重置。 如果您需要重置计数的版本，请考虑使用<a href="../../../java/util/concurrent/CyclicBarrier.html"><code>CyclicBarrier</code></a>  。 </p>
+<p>A <code>CountDownLatch</code>是一种通用的同步工具，可用于多种用途。  一个<code>CountDownLatch</code>为一个计数的CountDownLatch用作一个简单的开/关锁存器，或者门：所有线程调用<a href="../../../java/util/concurrent/CountDownLatch.html#await--"><code>await</code></a>在门口等待，直到被调用<a href="../../../java/util/concurrent/CountDownLatch.html#countDown--"><code>countDown()</code></a>的线程打开。  一个<code>CountDownLatch</code>初始化<em>N</em>可以用来做一个线程等待，直到<em>N个</em>线程完成某项操作，或某些动作已经完成N次</p>
+</blockquote>
+<p>个人解释: </p>
+<blockquote>
+<p>就是对线程计数,到达指定数量后,继续执行,否则等待</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Title</span>: CountDownLatchTest</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@Description</span>: 并发常用类,CountDownLatch 计数器</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@throws</span> InterruptedException 参数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> void 返回类型</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">CountDownLatchTest</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"CountDownLatch"</span>);</span><br><span class="line">		<span class="comment">// 计数器</span></span><br><span class="line">		CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				System.out.println(Thread.currentThread().getName() + <span class="string">"撤退!"</span>);</span><br><span class="line">				<span class="comment">// 计数器减一</span></span><br><span class="line">				countDownLatch.countDown();</span><br><span class="line">			&#125;, <span class="string">"线程"</span> + i).start();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 当 countDownLatch = 0 , 唤醒线程, 才会继续往下执行</span></span><br><span class="line">		countDownLatch.await();</span><br><span class="line">		System.out.println(<span class="string">"结果:"</span> + countDownLatch.getCount());</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果:</p>
+<p>CountDownLatch<br>线程1撤退!<br>线程2撤退!<br>线程5撤退!<br>线程6撤退!<br>线程9撤退!<br>线程0撤退!<br>线程3撤退!<br>线程4撤退!<br>线程7撤退!<br>线程8撤退!<br>结果:0 &lt;-countDownLatch 为0 才执行</p>
+</blockquote>
+<h2 id="CyclicBarrier"><a href="#CyclicBarrier" class="headerlink" title="CyclicBarrier"></a>CyclicBarrier</h2><blockquote>
+<p>java.util.concurrent<br>    Class CyclicBarrier</p>
+<p>java.lang.Object<br>        java.util.concurrent.CyclicBarrier </p>
+<hr>
+<p>public class CyclicBarrier<br>extends Object</p>
+<p>允许一组线程全部等待彼此达到共同屏障点的同步辅助。 循环阻塞在涉及固定大小的线程方的程序中很有用，这些线程必须偶尔等待彼此。 屏障被称为循环 ，因为它可以在等待的线程被释放之后重新使用。</p>
+</blockquote>
+<p>官方解释:</p>
+<blockquote>
+<p>A <code>CyclicBarrier</code>支持一个可选的<a href="../../../java/lang/Runnable.html"><code>Runnable</code></a>命令，每个屏障点运行一次，在派对中的最后一个线程到达之后，但在任何线程释放之前。  在任何一方继续进行之前，此<em>屏障操作</em>对更新共享状态很有用。</p>
+</blockquote>
+<p>个人解释:</p>
+<blockquote>
+<p>当阻塞的线程到达一定的数量,线程才会继续执行cyclicBarrier定义好的</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">CyclicBarrierTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"CyclicBarrier"</span>);</span><br><span class="line">	CyclicBarrier cyclicBarrier = <span class="keyword">new</span> CyclicBarrier(<span class="number">9</span>, () -&gt; &#123;</span><br><span class="line">		System.out.println(<span class="string">"九之极, 万物演化"</span>);</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> a = i;</span><br><span class="line">		<span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">			System.out.println(Thread.currentThread().getName() + <span class="string">"取得数据:   "</span> + a);</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				<span class="comment">// 当给定数量的线程等待它时,它才会继续执行</span></span><br><span class="line">				cyclicBarrier.await();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (BrokenBarrierException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;, <span class="string">"线程"</span> + i).start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 获取等待线程的数量</span></span><br><span class="line">	System.out.println(<span class="string">"获取等待线程的数量 "</span> + cyclicBarrier.getParties());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CyclicBarrier<br>线程0取得数据:   0<br>线程3取得数据:   3<br>线程4取得数据:   4<br>线程1取得数据:   1<br>线程2取得数据:   2<br>获取等待线程的数量 9<br>线程6取得数据:   6<br>线程5取得数据:   5<br>线程7取得数据:   7<br>线程8取得数据:   8<br>九之极, 万物演化  &lt;- 9</p>
+</blockquote>
+<h2 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h2><blockquote>
+<p>java.util.concurrent<br>    Class Semaphore<br>java.lang.Object<br>        java.util.concurrent.Semaphore </p>
+<p>All Implemented Interfaces:<br>Serializable </p>
+<hr>
+<p>public class Semaphore<br>extends Object<br>implements Serializable</p>
+<p>一个计数信号量。 在概念上，信号量维持一组许可证。 如果有必要，每个acquire()都会阻塞，直到许可证可用，然后才能使用它。 每个release()添加许可证，潜在地释放阻塞获取方。 但是，没有使用实际的许可证对象; Semaphore只保留可用数量的计数，并相应地执行。</p>
+</blockquote>
+<p>官方解释:</p>
+<blockquote>
+<p>​    信号量通常用于限制线程数，而不是访问某些（物理或逻辑）资源。  例如，这是一个使用信号量来控制对一个项目池的访问的类</p>
+<p>​    在获得项目之前，每个线程必须从信号量获取许可证，以确保某个项目可用。  当线程完成该项目后，它将返回到池中，并将许可证返回到信号量，允许另一个线程获取该项目。 请注意，当<a href="../../../java/util/concurrent/Semaphore.html#acquire--">调用<code>acquire()</code></a>时，不会保持同步锁定，因为这将阻止某个项目返回到池中。  信号量封装了限制对池的访问所需的同步，与保持池本身一致性所需的任何同步分开。 </p>
+</blockquote>
+<p>个人解释:</p>
+<blockquote>
+<p>相当于 限流</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SemaphoreTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 定义信号量 维持2个许可证</span></span><br><span class="line">		Semaphore semaphore = <span class="keyword">new</span> Semaphore(<span class="number">2</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> a = i;</span><br><span class="line">			<span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					<span class="comment">// 从该信号量获取许可证，阻止直到可用，或线程为 interrupted (中断)。</span></span><br><span class="line">					semaphore.acquire();</span><br><span class="line">					</span><br><span class="line">					System.out.println(Thread.currentThread().getName() + <span class="string">"取得数据:   "</span> + a);</span><br><span class="line">					TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">                    System.out.println(<span class="string">"等待线程数: "</span> + semaphore.getQueueLength());</span><br><span class="line">					System.out.println(Thread.currentThread().getName() + <span class="string">":1秒后丢弃数据:   "</span> + a);</span><br><span class="line">				&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">					<span class="comment">// 释放许可证，将其返回到信号量</span></span><br><span class="line">					semaphore.release();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;, <span class="string">"线程"</span> + i).start();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果:</p>
+<p>线程2取得数据:   2<br>线程0取得数据:   0<br>等待线程数: 7 &lt;–<br>等待线程数: 7 &lt;–<br>线程2:1秒后丢弃数据:   2<br>线程0:1秒后丢弃数据:   0<br>线程1取得数据:   1<br>线程3取得数据:   3<br>等待线程数: 5  &lt;–<br>等待线程数: 5  &lt;–<br>线程1:1秒后丢弃数据:   1<br>线程3:1秒后丢弃数据:   3<br>线程5取得数据:   5<br>线程6取得数据:   6<br>等待线程数: 3  &lt;–<br>线程5:1秒后丢弃数据:   5<br>等待线程数: 3  &lt;–<br>线程4取得数据:   4<br>线程6:1秒后丢弃数据:   6<br>线程7取得数据:   7<br>等待线程数: 1  &lt;–<br>线程4:1秒后丢弃数据:   4<br>等待线程数: 1  &lt;–<br>线程7:1秒后丢弃数据:   7<br>线程8取得数据:   8<br>等待线程数: 0  &lt;–<br>线程8:1秒后丢弃数据:   8</p>
+</blockquote>
+<p>小唠嗑：</p>
+<blockquote>
+<p>本章到这里就结束了，谢谢耐心看到这里的各位Boss,如果觉得有哪里说的不好的地方，还请高抬贵手多多原谅，不惜指教。</p>
+<p>最后，谢谢！</p>
+</blockquote>
 
       
     </div>
 
+    
+
+    
+    
+    
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #fc6423;font-size:16px;">---本文结束<i class="fa fa-heart"></i>感谢您的阅读!---</div>
+    
+</div>
+  
+</div>
+
+<div>
+     
+       
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/06/17/Java高级-JUC二-常用类/">Java高级-JUC二-常用类</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 周宏伟 的个人博客">周宏伟</a></p>
+  <p><span>发布时间:</span>2020年06月17日 - 12:06</p>
+  <p><span>最后更新:</span>2020年06月17日 - 12:06</p>
+  <p><span>原始链接:</span><a href="/2020/06/17/Java高级-JUC二-常用类/" title="Java高级-JUC二-常用类">http://oldzhoua.github.io/2020/06/17/Java高级-JUC二-常用类/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://oldzhoua.github.io/2020/06/17/Java高级-JUC二-常用类/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+     
+     </div>
+
+
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt style="text-align: center;width: 400px;">
+  <br>
+  <div>欢迎订阅我的公众号,及时推送最新文章！</div>
+</div>
+<!--微信二维码-->
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>Donate comment here</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/weixinpay.jpg" alt="周宏伟 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>周宏伟</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://oldzhoua.github.io/2020/06/17/Java高级-JUC二-常用类/" title="Java高级-JUC二-常用类">http://oldzhoua.github.io/2020/06/17/Java高级-JUC二-常用类/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/JUC/" rel="tag"># JUC</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+              <div>
+                
+
+<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
+
+
+  
+
+
+<div class="likely">
+	
+ 	 	<div class="twitter">Tweet</div>
+	
+ 	 	<div class="facebook">Share</div>
+	
+ 	 	<div class="linkedin">Link</div>
+	
+ 	 	<div class="gplus">Plus</div>
+	
+ 	 	<div class="vkontakte">Share</div>
+	
+ 	 	<div class="odnoklassniki">Class</div>
+	
+ 	 	<div class="telegram">Send</div>
+	
+ 	 	<div class="whatsapp">Send</div>
+	
+ 	 	<div class="pinterest">Pin</div>
+	
+</div>
+
+              </div>
+            
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/16/Java高级-JUC/" rel="next" title="Java高级_JUC">
+                <i class="fa fa-chevron-left"></i> Java高级_JUC
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -656,8 +1010,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -833,6 +1196,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">1.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">2.</span> <span class="nav-text">CyclicBarrier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semaphore"><span class="nav-number">3.</span> <span class="nav-text">Semaphore</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1031,6 +1411,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -1062,6 +1446,8 @@
 
   
 
+
+  
 
 
   
@@ -1427,7 +1813,7 @@
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1.0.0/bookmark.min.js"></script>
   <script>
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#更多");
   
   </script>
 
