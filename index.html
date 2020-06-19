@@ -438,7 +438,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">26</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">28</span></a>
 
   </li>
         
@@ -476,7 +476,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">24</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">27</span></a>
 
   </li>
 
@@ -738,7 +738,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/18/Java高级-JUC-Lock/">
+    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/19/Java高级-JVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周宏伟">
@@ -758,7 +758,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2020/06/18/Java高级-JUC-Lock/" class="post-title-link" itemprop="url">Java高级-JUC-Lock</a>
+                <a href="/2020/06/19/Java高级-JVM/" class="post-title-link" itemprop="url">Java高级_JVM</a>
               
             
           </h2>
@@ -783,7 +783,829 @@
                 
               
 
-              <time title="创建时间：2020-06-18 08:24:12 / 修改时间：08:35:39" itemprop="dateCreated datePublished" datetime="2020-06-18T08:24:12+08:00">2020-06-18</time>
+              <time title="创建时间：2020-06-19 06:53:24 / 修改时间：11:25:53" itemprop="dateCreated datePublished" datetime="2020-06-19T06:53:24+08:00">2020-06-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-JVM的介绍"><a href="#1-JVM的介绍" class="headerlink" title="1.JVM的介绍"></a>1.JVM的介绍</h2><blockquote>
+<p>JVM是Java Virtual Machine（Java<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS/omZrmi5/mnLo=" title="https://baike.baidu.com/item/虚拟机">虚拟机<i class="fa fa-external-link"></i></span>）的缩写</p>
+<p>本章所论的JVM是<strong>HotSpot VM</strong> , 是 Sun JDK和OpenJDK中所带的虚拟机，也是目前使用范围最广的Java虚拟机</p>
+<p>介绍我所知的另外两种:</p>
+<p><strong>Jrockit</strong>: 由BEA公司开发的专注于服务器端应用的虚拟机。号称世界上最快的虚拟机</p>
+<p><strong>J9</strong> ：J9由IBM公司开发，曾广泛应用于IBM公司系统内部及IBM小型机上。现已经捐献给Eclipse基金会。</p>
+</blockquote>
+<h2 id="2-JVM的作用"><a href="#2-JVM的作用" class="headerlink" title="2.JVM的作用"></a>2.JVM的作用</h2><blockquote>
+<p>java是一门高级语言,符合人们的习惯,但不符合电话的理解,因此需要在硬件上进行转化</p>
+<p>就是将.java文件转成Java字节码文件(.class),由JVM进行解析和执行.</p>
+</blockquote>
+<h2 id="3-JVM图解"><a href="#3-JVM图解" class="headerlink" title="3.JVM图解"></a>3.JVM图解</h2><p><img src="/2020/06/19/Java高级-JVM/Hexo\source\_posts\Java高级-JVM\Java_JVM.jpg" alt></p>
+<blockquote>
+<p>接下来就按着图解来进行拆分讲解</p>
+</blockquote>
+<h2 id="4-Javac编译器"><a href="#4-Javac编译器" class="headerlink" title="4.Javac编译器"></a>4.Javac编译器</h2><p>4.1编译器介绍</p>
+<blockquote>
+<p>编译器就是将“一种语言（通常为高级语言）”翻译为“另一种语言（通常为低级语言）”的程序,</p>
+<p>或者是把程序转换成计算机或者微型处理器能够识别的机器代码 0 - 1</p>
+</blockquote>
+<p>4.2编译器作用</p>
+<blockquote>
+<p>对于 Java 虚拟机来说，识别的是.class文件,</p>
+<p>而编译器的作用就是把.java.文件转化成.class文件</p>
+<p>在JDK安装目录有一个叫  <strong>javac</strong> 的编译器的工具,它就是把Java代码编译成字节码文件的</p>
+<p>一般讲的是Javac编译器,下面讲一下另外两种</p>
+</blockquote>
+<p>4.3编译器种类</p>
+<ol>
+<li><p>从源码到字节码 - <strong>javac编译器</strong></p>
+</li>
+<li><p>从字节码到机器码:</p>
+<p>​    2.1 使用 <strong>Java 解释器</strong>解释执行字节码             </p>
+<p>​            启动速度快-不需要翻译</p>
+<p>​            运行速度慢- 机器码运行的效率比解释器高</p>
+</li>
+</ol>
+<p>​            2.2 使用 <strong>JIT</strong> 编译器(即时编译器)将字节码转化为本地机器代码。</p>
+<p>​                    启动速度慢,运行速度快</p>
+<blockquote>
+<p>JIT编译器(动态编译)在JVM中有两种内置的即时编译器 Client Compiler 和 Server Compiler</p>
+<p>Client Comlier: 优化少,编译速度快</p>
+<p>Server Comlier: 根据性能优化,编译质量好,耗时长</p>
+<p>虽然有两种模式,但是JVM提供了三种运行模式: mixed mode (默认,混合),Interpreted Mode(解释),Compiled Mode(编译)</p>
+</blockquote>
+<p><img src="/2020/06/19/Java高级-JVM/Hexo\source\_posts\Java高级-JVM\javaversion.png" alt></p>
+<ol start="3">
+<li><p>从源码到机器码:</p>
+<p>AOT编译器 (JDK9新特性) :在程序执行前生成 Java 方法的本地代码，以便在程序运行时直接使用本地代码,静态编译</p>
+</li>
+</ol>
+<blockquote>
+<p>以上三种是JVM重要的编译器 </p>
+<p>编译速度上，解释执行 &gt; AOT 编译器 &gt; JIT 编译器</p>
+<p>编译质量上，JIT 编译器 &gt; AOT 编译器 &gt; 解释执行</p>
+</blockquote>
+<h2 id="5-类加载器"><a href="#5-类加载器" class="headerlink" title="5.类加载器"></a>5.类加载器</h2><ol>
+<li><h3 id="类加载介绍"><a href="#类加载介绍" class="headerlink" title="类加载介绍"></a>类加载介绍</h3><p>类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内，然后在堆区创建一个 java.lang.Class对象，用来封装类在方法区内的数据结构。</p>
+<p>类加载器是JVM一部分,负责动态加载Java类到Java虚拟机的内存空间中</p>
+</li>
+<li><h3 id="类加载器作用"><a href="#类加载器作用" class="headerlink" title="类加载器作用"></a>类加载器作用</h3><p>JVM中4种类加载器</p>
+<ol>
+<li><h4 id="启动类加载器"><a href="#启动类加载器" class="headerlink" title="启动类加载器"></a>启动类加载器</h4><p>负责将存放在 &lt;JRE_HOME&gt;\lib 目录中的类库加载到虚拟机内存中</p>
+<p>由 Java 实现，独立于虚拟机外部，并且全都继承自抽象类 java.lang.ClassLoader。</p>
+</li>
+<li><h4 id="扩展类加载器"><a href="#扩展类加载器" class="headerlink" title="扩展类加载器"></a>扩展类加载器</h4><p>它负责将 &lt;JAVA_HOME&gt;/lib/ext 或者被 java.ext.dir 系统变量所指定路径中的所有类库加载到内存中</p>
+</li>
+<li><h4 id="应用程序类加载器"><a href="#应用程序类加载器" class="headerlink" title="应用程序类加载器"></a>应用程序类加载器</h4><p>它负责加载用户类路径（ClassPath）上所指定的类库</p>
+</li>
+<li><h4 id="自定义类加载器"><a href="#自定义类加载器" class="headerlink" title="自定义类加载器"></a>自定义类加载器</h4><p>用户根据需求自己定义的。也需要继承自ClassLoader. </p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-类加载器的时机"><a href="#3-类加载器的时机" class="headerlink" title="3.类加载器的时机"></a>3.类加载器的时机</h3><p>   ​    1.new一个对象的时候，也就是创建类实例的时候<br>   ​    2.访问某个类或接口的静态变量，或者对该静态变量赋值<br>   ​    3.调用类的静态方法<br>   ​    4.反射（Class.forName(“xxx.xxx”)）<br>   ​    5.初始化一个类的子类（会首先初始化子类的父类）<br>   ​    6.JVM启动时标明的启动类，即文件名和类名相同的那个类</p>
+<h3 id="4-类加载器的机制-双亲委派模型"><a href="#4-类加载器的机制-双亲委派模型" class="headerlink" title="4.类加载器的机制 - 双亲委派模型"></a>4.类加载器的机制 - 双亲委派模型</h3><p>   <strong>双亲委派模型介绍:</strong></p>
+<p>   如果一个类加载器收到类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器完成，只有当父加载器在自己的搜索范围内找不到指定的类时（即ClassNotFoundException），子加载器才会尝试自己去加载。</p>
+<p>   <strong>双亲委派机制好处:</strong></p>
+<p>   保证java类库中的类不受用户类影响，防止用户自定义一个类库中的同名类，引起问题。</p>
+<h3 id="5-类加载的方式"><a href="#5-类加载的方式" class="headerlink" title="5.类加载的方式"></a>5.类加载的方式</h3><ol>
+<li><strong>命令行启动</strong>应用时候由JVM初始化加载</li>
+<li>通过<strong>Class.forName()</strong>方法动态加载</li>
+<li><p>通过<strong>ClassLoader.loadClass()</strong>方法动态加载</p>
+<h3 id="6-类加载的生命周期"><a href="#6-类加载的生命周期" class="headerlink" title="6.类加载的生命周期:"></a>6.类加载的生命周期:</h3><p><strong>加载</strong>:</p>
+<p>将编译后的.Class文件<strong>加载到内存中</strong></p>
+<p><strong>连接</strong>:(验证,准备,解析)</p>
+<pre><code>**验证:** 确保**Class文件**的字节流中包含的信息符合当前**虚拟机的要求**，并且不会危害虚拟机自身的安全
+</code></pre><p>​        <strong>准备</strong>: 为类变量<strong>分配内存</strong>并设置初始值，使用的是方法区的内存<br>​        <strong>解析: </strong> 将class文件的常量池的符号引用替换为直接引用的过程（是静态链接）。<br><strong>初始化</strong>: 为类的静态变量赋予程序中指定的初始值，还有执行静态代码块中的程序。<br><strong>使用</strong><br><strong>卸载</strong></p>
+<blockquote>
+<p>JVM把java文件数据从class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型</p>
+</blockquote>
+<blockquote>
+<p>将指定的class文件读取到内存里，并运行该class文件里的Java程序的过程，就称之为<strong>类的加载</strong>；反之，将某个class文件的运行时数据从JVM中移除的过程，就称之为<strong>类的卸载</strong>。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="6-运行时数据区"><a href="#6-运行时数据区" class="headerlink" title="6.运行时数据区"></a>6.运行时数据区</h2><h3 id="6-1虚拟机栈"><a href="#6-1虚拟机栈" class="headerlink" title="6.1虚拟机栈"></a>6.1虚拟机栈</h3><blockquote>
+<p>线程私有<br>生命周期与线程相同<br>每个方法执行会创建一个栈帧</p>
+</blockquote>
+<p>栈帧:</p>
+<ol>
+<li><p><strong>局部变量表：</strong></p>
+<p>局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，这个方法需要在帧中分配多大的局部变量空间是完全确定的，在方法运行期间不会改变局部变量表的大小。</p>
+<p><strong>存放的信息包括    基本数据类型,对象引用,returnAddress类型</strong></p>
+</li>
+<li><p><strong>操作数栈:</strong> 保存着Java 虚拟机执行过程中的数据</p>
+</li>
+<li><p><strong>动态链接</strong>：指向运行时常量池中该栈帧所属方法的引用</p>
+</li>
+<li><p><strong>方法出口</strong>：储存返回地址</p>
+<pre><code>退出方法的方式
+    正常完成出口
+    异常完成出口，不会返回值，返回地址通过异常处理器表来确定
+退出过程
+    1）恢复上层方法的局部变量表和操作数栈
+    2）把返回值压入调用者的栈帧的操作数栈中
+    3）调整PC计数器指向下一条指令
+</code></pre></li>
+</ol>
+<h3 id="6-2本地方法栈"><a href="#6-2本地方法栈" class="headerlink" title="6.2本地方法栈"></a>6.2本地方法栈</h3><blockquote>
+<p>线程私有<br>与虚拟机栈一样，只是服务的方法类型不一样</p>
+<p>使用到的Native方法服务</p>
+</blockquote>
+<h3 id="6-3程序计数器"><a href="#6-3程序计数器" class="headerlink" title="6.3程序计数器"></a>6.3程序计数器</h3><blockquote>
+<p>线程私有<br>当前线程执行字节码的行号指示器</p>
+<p>此内存区域是唯一一个不会出现OutOfMemoryError情况的区域。</p>
+</blockquote>
+<p>1.如果线程正在执行的是一个Java方法，则指明当前线程执行的代字节码行数</p>
+<p>2.如果正在执行的是Natvie方法，这个计数器值则为空（Undefined）</p>
+<h3 id="6-4方法区-元空间"><a href="#6-4方法区-元空间" class="headerlink" title="6.4方法区(元空间)"></a>6.4方法区(元空间)</h3><blockquote>
+<p>线程共享<br>储存已加载的类信息、常量、静态变量、即时编译器编译后的代码等数据</p>
+<p>元空间使用本地内存，理论上电脑有多少内存，它就有多少内存，避免的内存溢出问题</p>
+</blockquote>
+<p><strong>常量池</strong><br>    编译器生成的各种字面量和符号引用</p>
+<blockquote>
+<p> 符号引用:     <strong>类符号引用</strong>, <strong>方法符号引用</strong>, <strong>字段符号引用</strong><br>        一个java类（假设为People类）被编译成一个class文件时，如果People类引用了Tool类，但是在编译时People类并不知道引用类的实际内存地址，因此只能使用符号引用来代替。而在类装载器装载People类时，此时可以通过虚拟机获取Tool类的实际内存地址，因此便可以既将符号org.simple.Tool替换为Tool类的实际内存地址，及直接引用地址。</p>
+<p>字面量:     <strong>文本字符串, 八种基本类型, 声明为final的常量</strong><br>        String a = “abc”,这个abc就是字面量</p>
+<p>​        int a = 1; 这个1就是字面量</p>
+</blockquote>
+<h3 id="6-5堆"><a href="#6-5堆" class="headerlink" title="6.5堆"></a>6.5堆</h3><blockquote>
+</blockquote>
+<h2 id="7-执行引擎"><a href="#7-执行引擎" class="headerlink" title="7.执行引擎"></a>7.执行引擎</h2><h2 id="8-本地方法"><a href="#8-本地方法" class="headerlink" title="8.本地方法"></a>8.本地方法</h2><h3 id="9-本地方法库"><a href="#9-本地方法库" class="headerlink" title="9.本地方法库"></a>9.本地方法库</h3><p>小唠嗑：</p>
+<blockquote>
+<p>本章到这里就结束了，谢谢耐心看到这里的各位Boss,如果觉得有哪里说的不好的地方，还请高抬贵手多多原谅，不惜指教。</p>
+<p>最后，谢谢！</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+	
+	<div>
+  
+</div>
+
+<div>
+     
+     </div>
+
+
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/18/Java高级-JUC-concurrent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周宏伟">
+      <meta itemprop="description" content="我喜欢的都很贵，所以我才要努力争取">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周宏伟的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/18/Java高级-JUC-concurrent/" class="post-title-link" itemprop="url">Java高级-JUC-concurrent</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-18 08:42:04 / 修改时间：09:37:56" itemprop="dateCreated datePublished" datetime="2020-06-18T08:42:04+08:00">2020-06-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">909</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>队列:</p>
+<p>FIFO 先进先出特点</p>
+<p>阻塞队列</p>
+<p>同步队列</p>
+</blockquote>
+<p>阻塞队列:</p>
+<blockquote>
+<p>java.util.concurrent<br>Interface BlockingQueue<e></e></p>
+<p>参数类型<br>E - 此集合中保存的元素的类型<br>All Superinterfaces:<br>Collection <e>， Iterable <e>， Queue <e><br>All Known Subinterfaces:<br>BlockingDeque <e>， TransferQueue <e><br>所有已知实现类：<br>ArrayBlockingQueue ， DelayQueue ， LinkedBlockingDeque ， LinkedBlockingQueue ， LinkedTransferQueue ， PriorityBlockingQueue ， SynchronousQueue </e></e></e></e></e></p>
+<hr>
+</blockquote>
+<blockquote>
+<p>官方解释:</p>
+<p><code>BlockingQueue</code>方法有四种形式，具有不同的操作方式，</p>
+<p>不能立即满足，但可能在将来的某个时间点满足：</p>
+<p>一个抛出异常，</p>
+<p>第二个返回一个特殊值（  <code>null</code>或<code>false</code>  ，具体取决于操作），</p>
+<p>第三个程序将无限期地阻止当前线程，直到操作成功为止，</p>
+<p>第四个程序块在放弃之前只有给定的最大时限。  这些方法总结在下表中： </p>
+<p>Summary of BlockingQueue methods <em>Throws exception</em> <em>Special  value</em> <em>Blocks</em> <em>Times out</em> </p>
+<p><strong>Insert</strong> <a href="../../../java/util/concurrent/BlockingQueue.html#add-E-"><code>add(e)</code></a>  <a href="../../../java/util/concurrent/BlockingQueue.html#offer-E-"><code>offer(e)</code></a>  <a href="../../../java/util/concurrent/BlockingQueue.html#put-E-"><code>put(e)</code></a>  <a href="../../../java/util/concurrent/BlockingQueue.html#offer-E-long-java.util.concurrent.TimeUnit-"><code>offer(e,  time, unit)</code></a> </p>
+<p><strong>Remove</strong> <a href="../../../java/util/concurrent/BlockingQueue.html#remove-java.lang.Object-"><code>remove()</code></a>  <a href="../../../java/util/concurrent/BlockingQueue.html#poll-long-java.util.concurrent.TimeUnit-"><code>poll()</code></a>  <a href="../../../java/util/concurrent/BlockingQueue.html#take--"><code>take()</code></a>  <a href="../../../java/util/concurrent/BlockingQueue.html#poll-long-java.util.concurrent.TimeUnit-"><code>poll(time,  unit)</code></a> </p>
+<p><strong>Examine</strong> <a href="../../../java/util/Queue.html#element--"><code>element()</code></a> <a href="../../../java/util/Queue.html#peek--"><code>peek()</code></a> <em>not  applicable</em> <em>not applicable</em> </p>
+</blockquote>
+<p>个人解释:</p>
+<blockquote>
+<p>四种用法:</p>
+<p>1.抛异常</p>
+<p>2.返回特殊值 null/false</p>
+<p>3.一直阻塞当前线程</p>
+<p>4.超时等待</p>
+</blockquote>
+<blockquote>
+<p>什么时候使用阻塞队列:</p>
+<p>多线程并发</p>
+<p>线程池</p>
+</blockquote>
+<p>仔细看一下</p>
+<p>不能立即满足，但可能在将来的某个时间点满足</p>
+<p>先看后面半句话:可能在将来的某个时间点满足</p>
+<p>代码测试</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+	
+	<div>
+  
+</div>
+
+<div>
+     
+     </div>
+
+
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/18/Java高级-JUC-locks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周宏伟">
+      <meta itemprop="description" content="我喜欢的都很贵，所以我才要努力争取">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周宏伟的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/18/Java高级-JUC-locks/" class="post-title-link" itemprop="url">Java高级-JUC-locks</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-18 08:24:12 / 修改时间：08:43:13" itemprop="dateCreated datePublished" datetime="2020-06-18T08:24:12+08:00">2020-06-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ReadWriteLock"><a href="#ReadWriteLock" class="headerlink" title="ReadWriteLock"></a>ReadWriteLock</h2><blockquote>
+<p>java.util.concurrent.locks<br>Interface ReadWriteLock</p>
+<p>所有已知实现类：<br>ReentrantReadWriteLock </p>
+<hr>
+<p>public interface ReadWriteLock</p>
+<p>A <code>ReadWriteLock</code>维护一对关联的<a href="../../../../java/util/concurrent/locks/Lock.html"><code>locks</code></a>  ，一个用于只读操作，一个用于写入。 <a href="../../../../java/util/concurrent/locks/ReadWriteLock.html#readLock--"><code>read  lock</code></a>可以由多个阅读器线程同时进行，只要没有作者。 <a href="../../../../java/util/concurrent/locks/ReadWriteLock.html#writeLock--"><code>write  lock</code></a>是独家的</p>
+</blockquote>
+<blockquote>
+<p>为什么要使用:</p>
+<p>希望更加细腻度的控制锁,读和写锁分离</p>
+</blockquote>
+<p>未用锁之前的效果:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WriteRead</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 写</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">write</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			System.out.println(Thread.currentThread().getName() + <span class="string">"开始写"</span>);</span><br><span class="line">			System.out.println(Thread.currentThread().getName() + <span class="string">"结束写"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 读</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(Thread.currentThread().getName() + <span class="string">"开始读"</span>);</span><br><span class="line">		System.out.println(Thread.currentThread().getName() + <span class="string">"结束读"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadWriteLockTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		readWriteLock();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readWriteLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		WriteRead writeRead = <span class="keyword">new</span> WriteRead();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				writeRead.lock();</span><br><span class="line">			&#125;,<span class="string">"线程"</span> + i).start();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				writeRead.lock();</span><br><span class="line">			&#125;,<span class="string">"线程"</span> + i).start();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果:</p>
+<p>线程1开始写<br>线程2开始写 &lt;–插队<br>线程2结束写 &lt;–插队<br>线程1结束写<br>线程8开始写<br>线程9开始写<br>线程9结束写<br>线程8结束写<br>线程4结束写<br>线程7开始写<br>线程7结束写<br>线程6开始写</p>
+<p>…</p>
+</blockquote>
+<p>加锁的效果:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WriteRead</span> </span>&#123;</span><br><span class="line">	<span class="keyword">final</span> ReadWriteLock rwl = <span class="keyword">new</span> ReentrantReadWriteLock(); </span><br><span class="line">	<span class="comment">// 写</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">writelock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		rwl.writeLock().lock();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			System.out.println(Thread.currentThread().getName() + <span class="string">"开始写"</span>);</span><br><span class="line">			System.out.println(Thread.currentThread().getName() + <span class="string">"结束写"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">			rwl.writeLock().unlock();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 读</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">readlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		rwl.readLock().lock();</span><br><span class="line">		System.out.println(Thread.currentThread().getName() + <span class="string">"开始读"</span>);</span><br><span class="line">		System.out.println(Thread.currentThread().getName() + <span class="string">"结束读"</span>);</span><br><span class="line">		rwl.readLock().unlock();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadWriteLockTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		readWriteLock();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readWriteLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		WriteRead writeRead = <span class="keyword">new</span> WriteRead();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				writeRead.writelock();</span><br><span class="line">			&#125;,<span class="string">"线程"</span> + i).start();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">				writeRead.readlock();</span><br><span class="line">			&#125;,<span class="string">"线程"</span> + i).start();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果:</p>
+<p>线程3开始写<br>线程3结束写<br>线程7开始写<br>线程7结束写<br>线程0开始写<br>线程0结束写<br>线程1开始写<br>线程1结束写<br>线程2开始写<br>线程2结束写<br>线程4开始写<br>线程4结束写<br>线程6开始写<br>线程6结束写<br>线程5开始写<br>线程5结束写<br>线程8开始写<br>线程8结束写<br>线程9开始写<br>线程9结束写</p>
+</blockquote>
+<p><strong>ReadWriteLock</strong>这个接口很简单,只有一个实现类ReentrantReadWriteLock</p>
+<blockquote>
+<p>java.util.concurrent.locks<br>Class ReentrantReadWriteLock</p>
+<p>java.lang.Object<br>        java.util.concurrent.locks.ReentrantReadWriteLock </p>
+<p>All Implemented Interfaces:<br>Serializable ， ReadWriteLock </p>
+<hr>
+<p>public class ReentrantReadWriteLock<br>extends Object<br>implements ReadWriteLock, SerializableReadWriteLock</p>
+</blockquote>
+<ul>
+<li>| Modifier and Type | Class and Description                                        |<br>| —————– | ———————————————————— |<br>| <code>static class</code>   | <code>ReentrantReadWriteLock.ReadLock</code>  该锁由方法 <a href="../../../../java/util/concurrent/locks/ReentrantReadWriteLock.html#readLock--"><code>readLock()</code></a>返回。 |<br>| <code>static class</code>   | <code>ReentrantReadWriteLock.WriteLock</code>  该锁由方法 <a href="../../../../java/util/concurrent/locks/ReentrantReadWriteLock.html#writeLock--"><code>writeLock()</code></a>返回。 |</li>
+</ul>
+<p>小唠嗑：</p>
+<blockquote>
+<p>本章到这里就结束了，谢谢耐心看到这里的各位Boss,如果觉得有哪里说的不好的地方，还请高抬贵手多多原谅，不惜指教。</p>
+<p>最后，谢谢！</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+	
+	<div>
+  
+</div>
+
+<div>
+     
+     </div>
+
+
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/18/Java高级-JUC-Lock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周宏伟">
+      <meta itemprop="description" content="我喜欢的都很贵，所以我才要努力争取">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周宏伟的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/18/Java高级-JUC-Lock/" class="post-title-link" itemprop="url">Java高级-JUC-locks</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-18 08:24:12 / 修改时间：08:42:54" itemprop="dateCreated datePublished" datetime="2020-06-18T08:24:12+08:00">2020-06-18</time>
             
 
             
@@ -2045,701 +2867,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/12/Java高级-反射机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="周宏伟">
-      <meta itemprop="description" content="我喜欢的都很贵，所以我才要努力争取">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周宏伟的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/06/12/Java高级-反射机制/" class="post-title-link" itemprop="url">Java高级_反射机制</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-06-12 16:37:28" itemprop="dateCreated datePublished" datetime="2020-06-12T16:37:28+08:00">2020-06-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-06-15 15:54:05" itemprop="dateModified" datetime="2020-06-15T15:54:05+08:00">2020-06-15</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/java高级-反射机制/" itemprop="url" rel="index"><span itemprop="name">java高级_反射机制</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="类对象获取"><a href="#类对象获取" class="headerlink" title="类对象获取"></a>类对象获取</h2><blockquote>
-<p>先创建对象类</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String sex;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> String str;</span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		str = <span class="string">"已经初始化!"</span>;</span><br><span class="line">		System.out.println(<span class="string">"初始化..."</span> + str);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"User [name="</span> + name + <span class="string">", sex="</span> + sex + <span class="string">"]"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/06/12/Java高级-反射机制/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-	
-	<div>
-  
-</div>
-
-<div>
-     
-     </div>
-
-
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/12/Java中级-Lamda-Stream/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="周宏伟">
-      <meta itemprop="description" content="我喜欢的都很贵，所以我才要努力争取">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周宏伟的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/06/12/Java中级-Lamda-Stream/" class="post-title-link" itemprop="url">Java中级_Lamda-Stream</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-06-12 16:32:31" itemprop="dateCreated datePublished" datetime="2020-06-12T16:32:31+08:00">2020-06-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-06-15 15:54:40" itemprop="dateModified" datetime="2020-06-15T15:54:40+08:00">2020-06-15</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/java中级-lamda-stream/" itemprop="url" rel="index"><span itemprop="name">java中级_lamda-stream</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.9k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">3 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Lamda"><a href="#Lamda" class="headerlink" title="Lamda"></a>Lamda</h2><h3 id="规则"><a href="#规则" class="headerlink" title="规则:"></a>规则:</h3><ol>
-<li><p>接口必须是函数式接口---<strong>@FunctionalInterface</strong></p>
-</li>
-<li><p>接口里面只能够存在一个抽象方法</p>
-<blockquote>
-<p>java8还有个特性就是如果你的接口中没有抽象方法，但有个默认(default)方法，它也是函数式接口</p>
-</blockquote></li></ol>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/06/12/Java中级-Lamda-Stream/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-	
-	<div>
-  
-</div>
-
-<div>
-     
-     </div>
-
-
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/05/12/Java中级-多线程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="周宏伟">
-      <meta itemprop="description" content="我喜欢的都很贵，所以我才要努力争取">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周宏伟的个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/05/12/Java中级-多线程/" class="post-title-link" itemprop="url">Java中级_多线程</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-05-12 16:26:48" itemprop="dateCreated datePublished" datetime="2020-05-12T16:26:48+08:00">2020-05-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-06-16 12:02:43" itemprop="dateModified" datetime="2020-06-16T12:02:43+08:00">2020-06-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/java中级-多线程/" itemprop="url" rel="index"><span itemprop="name">java中级_多线程</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">5.4k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">5 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><blockquote>
-<p>线程是进程中的一个实体</p>
-<p>是被系统独立调度和分配的基本单位</p>
-</blockquote>
-<p><strong>一个标准的线程</strong>:</p>
-<ol>
-<li>线程ID,</li>
-<li>当前指令指针(PC)</li>
-<li>寄存器集合</li>
-<li>堆栈</li>
-</ol>
-<p><strong>Java默认线程有两个:</strong></p>
-<ol>
-<li>main()主线程</li>
-<li><p>GC线程</p></li></ol>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/05/12/Java中级-多线程/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-	
-	<div>
-  
-</div>
-
-<div>
-     
-     </div>
-
-
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2788,7 +2915,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2898,7 +3025,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2985,7 +3116,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">159k</span>
+    <span title="站点总字数">166k</span>
   
 
   
@@ -2996,7 +3127,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:24</span>
+    <span title="站点阅读时长">2:31</span>
   
 </div>
 

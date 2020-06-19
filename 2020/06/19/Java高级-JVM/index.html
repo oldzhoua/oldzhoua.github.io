@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.3.0/han.min.css">
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/fancybox@3.0.0/dist/css/jquery.fancybox.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1.JVM的介绍 JVM是Java Virtual Machine（Java虚拟机）的缩写 本章所论的JVM是HotSpot VM , 是 Sun JDK和OpenJDK中所带的虚拟机，也是目前使用范围最广的Java虚拟机 介绍我所知的另外两种: Jrockit: 由BEA公司开发的专注于服务器端应用的虚拟机。号称世界上最快的虚拟机 J9 ：J9由IBM公司开发，曾广泛应用于IBM公司系统内部及I">
+<meta name="keywords" content="java,JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java高级_JVM">
+<meta property="og:url" content="http://oldzhoua.github.io/2020/06/19/Java高级-JVM/index.html">
+<meta property="og:site_name" content="周宏伟的个人博客">
+<meta property="og:description" content="1.JVM的介绍 JVM是Java Virtual Machine（Java虚拟机）的缩写 本章所论的JVM是HotSpot VM , 是 Sun JDK和OpenJDK中所带的虚拟机，也是目前使用范围最广的Java虚拟机 介绍我所知的另外两种: Jrockit: 由BEA公司开发的专注于服务器端应用的虚拟机。号称世界上最快的虚拟机 J9 ：J9由IBM公司开发，曾广泛应用于IBM公司系统内部及I">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://oldzhoua.github.io/2020/06/19/Java高级-JVM/Hexo/source/_posts/Java高级-JVM/Java_JVM.jpg">
+<meta property="og:image" content="http://oldzhoua.github.io/2020/06/19/Java高级-JVM/Hexo/source/_posts/Java高级-JVM/javaversion.png">
+<meta property="og:updated_time" content="2020-06-19T03:25:53.631Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java高级_JVM">
+<meta name="twitter:description" content="1.JVM的介绍 JVM是Java Virtual Machine（Java虚拟机）的缩写 本章所论的JVM是HotSpot VM , 是 Sun JDK和OpenJDK中所带的虚拟机，也是目前使用范围最广的Java虚拟机 介绍我所知的另外两种: Jrockit: 由BEA公司开发的专注于服务器端应用的虚拟机。号称世界上最快的虚拟机 J9 ：J9由IBM公司开发，曾广泛应用于IBM公司系统内部及I">
+<meta name="twitter:image" content="http://oldzhoua.github.io/2020/06/19/Java高级-JVM/Hexo/source/_posts/Java高级-JVM/Java_JVM.jpg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://oldzhoua.github.io/2020/06/19/Java高级-JVM/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java高级_JVM | 周宏伟的个人博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">周宏伟的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-java">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/java/" rel="section"><i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br>java</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-javaweb">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/javaweb/" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud"></i> <br>javaweb</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-mybatis">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/mybatis/" rel="section"><i class="menu-item-icon fa fa-fw fa-medium"></i> <br>mybatis</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-spring">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/spring/" rel="section"><i class="menu-item-icon fa fa-fw fa-strikethrough"></i> <br>spring</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springmvc">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/springmvc/" rel="section"><i class="menu-item-icon fa fa-fw fa-stumbleupon"></i> <br>springmvc</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springboot2">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/springboot2/" rel="section"><i class="menu-item-icon fa fa-fw fa-bold"></i> <br>springboot2</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-springcloud">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/springcloud/" rel="section"><i class="menu-item-icon fa fa-fw fa-cloud"></i> <br>springcloud</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-其他技术">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/其他技术/" rel="section"><i class="menu-item-icon fa fa-fw fa-strikethrough"></i> <br>其他技术</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-问题">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/问题/" rel="section"><i class="menu-item-icon fa fa-fw fa-question"></i> <br>问题</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">28</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">12</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">27</span></a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+   
+ </header>
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://oldzhoua.github.io/2020/06/19/Java高级-JVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周宏伟">
+      <meta itemprop="description" content="我喜欢的都很贵，所以我才要努力争取">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周宏伟的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Java高级_JVM
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-19 06:53:24 / 修改时间：11:25:53" itemprop="dateCreated datePublished" datetime="2020-06-19T06:53:24+08:00">2020-06-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">3 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-JVM的介绍"><a href="#1-JVM的介绍" class="headerlink" title="1.JVM的介绍"></a>1.JVM的介绍</h2><blockquote>
+<p>JVM是Java Virtual Machine（Java<span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS/omZrmi5/mnLo=" title="https://baike.baidu.com/item/虚拟机">虚拟机<i class="fa fa-external-link"></i></span>）的缩写</p>
+<p>本章所论的JVM是<strong>HotSpot VM</strong> , 是 Sun JDK和OpenJDK中所带的虚拟机，也是目前使用范围最广的Java虚拟机</p>
+<p>介绍我所知的另外两种:</p>
+<p><strong>Jrockit</strong>: 由BEA公司开发的专注于服务器端应用的虚拟机。号称世界上最快的虚拟机</p>
+<p><strong>J9</strong> ：J9由IBM公司开发，曾广泛应用于IBM公司系统内部及IBM小型机上。现已经捐献给Eclipse基金会。</p>
+</blockquote>
+<h2 id="2-JVM的作用"><a href="#2-JVM的作用" class="headerlink" title="2.JVM的作用"></a>2.JVM的作用</h2><blockquote>
+<p>java是一门高级语言,符合人们的习惯,但不符合电话的理解,因此需要在硬件上进行转化</p>
+<p>就是将.java文件转成Java字节码文件(.class),由JVM进行解析和执行.</p>
+</blockquote>
+<h2 id="3-JVM图解"><a href="#3-JVM图解" class="headerlink" title="3.JVM图解"></a>3.JVM图解</h2><p><img src="/2020/06/19/Java高级-JVM/Hexo\source\_posts\Java高级-JVM\Java_JVM.jpg" alt></p>
+<blockquote>
+<p>接下来就按着图解来进行拆分讲解</p>
+</blockquote>
+<h2 id="4-Javac编译器"><a href="#4-Javac编译器" class="headerlink" title="4.Javac编译器"></a>4.Javac编译器</h2><p>4.1编译器介绍</p>
+<blockquote>
+<p>编译器就是将“一种语言（通常为高级语言）”翻译为“另一种语言（通常为低级语言）”的程序,</p>
+<p>或者是把程序转换成计算机或者微型处理器能够识别的机器代码 0 - 1</p>
+</blockquote>
+<p>4.2编译器作用</p>
+<blockquote>
+<p>对于 Java 虚拟机来说，识别的是.class文件,</p>
+<p>而编译器的作用就是把.java.文件转化成.class文件</p>
+<p>在JDK安装目录有一个叫  <strong>javac</strong> 的编译器的工具,它就是把Java代码编译成字节码文件的</p>
+<p>一般讲的是Javac编译器,下面讲一下另外两种</p>
+</blockquote>
+<p>4.3编译器种类</p>
+<ol>
+<li><p>从源码到字节码 - <strong>javac编译器</strong></p>
+</li>
+<li><p>从字节码到机器码:</p>
+<p>​    2.1 使用 <strong>Java 解释器</strong>解释执行字节码             </p>
+<p>​            启动速度快-不需要翻译</p>
+<p>​            运行速度慢- 机器码运行的效率比解释器高</p>
+</li>
+</ol>
+<p>​            2.2 使用 <strong>JIT</strong> 编译器(即时编译器)将字节码转化为本地机器代码。</p>
+<p>​                    启动速度慢,运行速度快</p>
+<blockquote>
+<p>JIT编译器(动态编译)在JVM中有两种内置的即时编译器 Client Compiler 和 Server Compiler</p>
+<p>Client Comlier: 优化少,编译速度快</p>
+<p>Server Comlier: 根据性能优化,编译质量好,耗时长</p>
+<p>虽然有两种模式,但是JVM提供了三种运行模式: mixed mode (默认,混合),Interpreted Mode(解释),Compiled Mode(编译)</p>
+</blockquote>
+<p><img src="/2020/06/19/Java高级-JVM/Hexo\source\_posts\Java高级-JVM\javaversion.png" alt></p>
+<ol start="3">
+<li><p>从源码到机器码:</p>
+<p>AOT编译器 (JDK9新特性) :在程序执行前生成 Java 方法的本地代码，以便在程序运行时直接使用本地代码,静态编译</p>
+</li>
+</ol>
+<blockquote>
+<p>以上三种是JVM重要的编译器 </p>
+<p>编译速度上，解释执行 &gt; AOT 编译器 &gt; JIT 编译器</p>
+<p>编译质量上，JIT 编译器 &gt; AOT 编译器 &gt; 解释执行</p>
+</blockquote>
+<h2 id="5-类加载器"><a href="#5-类加载器" class="headerlink" title="5.类加载器"></a>5.类加载器</h2><ol>
+<li><h3 id="类加载介绍"><a href="#类加载介绍" class="headerlink" title="类加载介绍"></a>类加载介绍</h3><p>类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在运行时数据区的方法区内，然后在堆区创建一个 java.lang.Class对象，用来封装类在方法区内的数据结构。</p>
+<p>类加载器是JVM一部分,负责动态加载Java类到Java虚拟机的内存空间中</p>
+</li>
+<li><h3 id="类加载器作用"><a href="#类加载器作用" class="headerlink" title="类加载器作用"></a>类加载器作用</h3><p>JVM中4种类加载器</p>
+<ol>
+<li><h4 id="启动类加载器"><a href="#启动类加载器" class="headerlink" title="启动类加载器"></a>启动类加载器</h4><p>负责将存放在 &lt;JRE_HOME&gt;\lib 目录中的类库加载到虚拟机内存中</p>
+<p>由 Java 实现，独立于虚拟机外部，并且全都继承自抽象类 java.lang.ClassLoader。</p>
+</li>
+<li><h4 id="扩展类加载器"><a href="#扩展类加载器" class="headerlink" title="扩展类加载器"></a>扩展类加载器</h4><p>它负责将 &lt;JAVA_HOME&gt;/lib/ext 或者被 java.ext.dir 系统变量所指定路径中的所有类库加载到内存中</p>
+</li>
+<li><h4 id="应用程序类加载器"><a href="#应用程序类加载器" class="headerlink" title="应用程序类加载器"></a>应用程序类加载器</h4><p>它负责加载用户类路径（ClassPath）上所指定的类库</p>
+</li>
+<li><h4 id="自定义类加载器"><a href="#自定义类加载器" class="headerlink" title="自定义类加载器"></a>自定义类加载器</h4><p>用户根据需求自己定义的。也需要继承自ClassLoader. </p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="3-类加载器的时机"><a href="#3-类加载器的时机" class="headerlink" title="3.类加载器的时机"></a>3.类加载器的时机</h3><p>   ​    1.new一个对象的时候，也就是创建类实例的时候<br>   ​    2.访问某个类或接口的静态变量，或者对该静态变量赋值<br>   ​    3.调用类的静态方法<br>   ​    4.反射（Class.forName(“xxx.xxx”)）<br>   ​    5.初始化一个类的子类（会首先初始化子类的父类）<br>   ​    6.JVM启动时标明的启动类，即文件名和类名相同的那个类</p>
+<h3 id="4-类加载器的机制-双亲委派模型"><a href="#4-类加载器的机制-双亲委派模型" class="headerlink" title="4.类加载器的机制 - 双亲委派模型"></a>4.类加载器的机制 - 双亲委派模型</h3><p>   <strong>双亲委派模型介绍:</strong></p>
+<p>   如果一个类加载器收到类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器完成，只有当父加载器在自己的搜索范围内找不到指定的类时（即ClassNotFoundException），子加载器才会尝试自己去加载。</p>
+<p>   <strong>双亲委派机制好处:</strong></p>
+<p>   保证java类库中的类不受用户类影响，防止用户自定义一个类库中的同名类，引起问题。</p>
+<h3 id="5-类加载的方式"><a href="#5-类加载的方式" class="headerlink" title="5.类加载的方式"></a>5.类加载的方式</h3><ol>
+<li><strong>命令行启动</strong>应用时候由JVM初始化加载</li>
+<li>通过<strong>Class.forName()</strong>方法动态加载</li>
+<li><p>通过<strong>ClassLoader.loadClass()</strong>方法动态加载</p>
+<h3 id="6-类加载的生命周期"><a href="#6-类加载的生命周期" class="headerlink" title="6.类加载的生命周期:"></a>6.类加载的生命周期:</h3><p><strong>加载</strong>:</p>
+<p>将编译后的.Class文件<strong>加载到内存中</strong></p>
+<p><strong>连接</strong>:(验证,准备,解析)</p>
+<pre><code>**验证:** 确保**Class文件**的字节流中包含的信息符合当前**虚拟机的要求**，并且不会危害虚拟机自身的安全
+</code></pre><p>​        <strong>准备</strong>: 为类变量<strong>分配内存</strong>并设置初始值，使用的是方法区的内存<br>​        <strong>解析: </strong> 将class文件的常量池的符号引用替换为直接引用的过程（是静态链接）。<br><strong>初始化</strong>: 为类的静态变量赋予程序中指定的初始值，还有执行静态代码块中的程序。<br><strong>使用</strong><br><strong>卸载</strong></p>
+<blockquote>
+<p>JVM把java文件数据从class文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的Java类型</p>
+</blockquote>
+<blockquote>
+<p>将指定的class文件读取到内存里，并运行该class文件里的Java程序的过程，就称之为<strong>类的加载</strong>；反之，将某个class文件的运行时数据从JVM中移除的过程，就称之为<strong>类的卸载</strong>。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="6-运行时数据区"><a href="#6-运行时数据区" class="headerlink" title="6.运行时数据区"></a>6.运行时数据区</h2><h3 id="6-1虚拟机栈"><a href="#6-1虚拟机栈" class="headerlink" title="6.1虚拟机栈"></a>6.1虚拟机栈</h3><blockquote>
+<p>线程私有<br>生命周期与线程相同<br>每个方法执行会创建一个栈帧</p>
+</blockquote>
+<p>栈帧:</p>
+<ol>
+<li><p><strong>局部变量表：</strong></p>
+<p>局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，这个方法需要在帧中分配多大的局部变量空间是完全确定的，在方法运行期间不会改变局部变量表的大小。</p>
+<p><strong>存放的信息包括    基本数据类型,对象引用,returnAddress类型</strong></p>
+</li>
+<li><p><strong>操作数栈:</strong> 保存着Java 虚拟机执行过程中的数据</p>
+</li>
+<li><p><strong>动态链接</strong>：指向运行时常量池中该栈帧所属方法的引用</p>
+</li>
+<li><p><strong>方法出口</strong>：储存返回地址</p>
+<pre><code>退出方法的方式
+    正常完成出口
+    异常完成出口，不会返回值，返回地址通过异常处理器表来确定
+退出过程
+    1）恢复上层方法的局部变量表和操作数栈
+    2）把返回值压入调用者的栈帧的操作数栈中
+    3）调整PC计数器指向下一条指令
+</code></pre></li>
+</ol>
+<h3 id="6-2本地方法栈"><a href="#6-2本地方法栈" class="headerlink" title="6.2本地方法栈"></a>6.2本地方法栈</h3><blockquote>
+<p>线程私有<br>与虚拟机栈一样，只是服务的方法类型不一样</p>
+<p>使用到的Native方法服务</p>
+</blockquote>
+<h3 id="6-3程序计数器"><a href="#6-3程序计数器" class="headerlink" title="6.3程序计数器"></a>6.3程序计数器</h3><blockquote>
+<p>线程私有<br>当前线程执行字节码的行号指示器</p>
+<p>此内存区域是唯一一个不会出现OutOfMemoryError情况的区域。</p>
+</blockquote>
+<p>1.如果线程正在执行的是一个Java方法，则指明当前线程执行的代字节码行数</p>
+<p>2.如果正在执行的是Natvie方法，这个计数器值则为空（Undefined）</p>
+<h3 id="6-4方法区-元空间"><a href="#6-4方法区-元空间" class="headerlink" title="6.4方法区(元空间)"></a>6.4方法区(元空间)</h3><blockquote>
+<p>线程共享<br>储存已加载的类信息、常量、静态变量、即时编译器编译后的代码等数据</p>
+<p>元空间使用本地内存，理论上电脑有多少内存，它就有多少内存，避免的内存溢出问题</p>
+</blockquote>
+<p><strong>常量池</strong><br>    编译器生成的各种字面量和符号引用</p>
+<blockquote>
+<p> 符号引用:     <strong>类符号引用</strong>, <strong>方法符号引用</strong>, <strong>字段符号引用</strong><br>        一个java类（假设为People类）被编译成一个class文件时，如果People类引用了Tool类，但是在编译时People类并不知道引用类的实际内存地址，因此只能使用符号引用来代替。而在类装载器装载People类时，此时可以通过虚拟机获取Tool类的实际内存地址，因此便可以既将符号org.simple.Tool替换为Tool类的实际内存地址，及直接引用地址。</p>
+<p>字面量:     <strong>文本字符串, 八种基本类型, 声明为final的常量</strong><br>        String a = “abc”,这个abc就是字面量</p>
+<p>​        int a = 1; 这个1就是字面量</p>
+</blockquote>
+<h3 id="6-5堆"><a href="#6-5堆" class="headerlink" title="6.5堆"></a>6.5堆</h3><blockquote>
+</blockquote>
+<h2 id="7-执行引擎"><a href="#7-执行引擎" class="headerlink" title="7.执行引擎"></a>7.执行引擎</h2><h2 id="8-本地方法"><a href="#8-本地方法" class="headerlink" title="8.本地方法"></a>8.本地方法</h2><h3 id="9-本地方法库"><a href="#9-本地方法库" class="headerlink" title="9.本地方法库"></a>9.本地方法库</h3><p>小唠嗑：</p>
+<blockquote>
+<p>本章到这里就结束了，谢谢耐心看到这里的各位Boss,如果觉得有哪里说的不好的地方，还请高抬贵手多多原谅，不惜指教。</p>
+<p>最后，谢谢！</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+	
+	<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #fc6423;font-size:16px;">---本文结束<i class="fa fa-heart"></i>感谢您的阅读!---</div>
+    
+</div>
+  
+</div>
+
+<div>
+     
+       
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/06/19/Java高级-JVM/">Java高级_JVM</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 周宏伟 的个人博客">周宏伟</a></p>
+  <p><span>发布时间:</span>2020年06月19日 - 06:06</p>
+  <p><span>最后更新:</span>2020年06月19日 - 11:06</p>
+  <p><span>原始链接:</span><a href="/2020/06/19/Java高级-JVM/" title="Java高级_JVM">http://oldzhoua.github.io/2020/06/19/Java高级-JVM/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://oldzhoua.github.io/2020/06/19/Java高级-JVM/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+     
+     </div>
+
+
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/weixin.jpg" alt style="text-align: center;width: 400px;">
+  <br>
+  <div>欢迎订阅我的公众号,及时推送最新文章！</div>
+</div>
+<!--微信二维码-->
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>Donate comment here</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/weixinpay.jpg" alt="周宏伟 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>周宏伟</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://oldzhoua.github.io/2020/06/19/Java高级-JVM/" title="Java高级_JVM">http://oldzhoua.github.io/2020/06/19/Java高级-JVM/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+              <div>
+                
+
+<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
+
+
+  
+
+
+<div class="likely">
+	
+ 	 	<div class="twitter">Tweet</div>
+	
+ 	 	<div class="facebook">Share</div>
+	
+ 	 	<div class="linkedin">Link</div>
+	
+ 	 	<div class="gplus">Plus</div>
+	
+ 	 	<div class="vkontakte">Share</div>
+	
+ 	 	<div class="odnoklassniki">Class</div>
+	
+ 	 	<div class="telegram">Send</div>
+	
+ 	 	<div class="whatsapp">Send</div>
+	
+ 	 	<div class="pinterest">Pin</div>
+	
+</div>
+
+              </div>
+            
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/18/Java高级-JUC-concurrent/" rel="next" title="Java高级-JUC-concurrent">
+                <i class="fa fa-chevron-left"></i> Java高级-JUC-concurrent
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="周宏伟">
+            
+              <p class="site-author-name" itemprop="name">周宏伟</p>
+              <div class="site-description motion-element" itemprop="description">我喜欢的都很贵，所以我才要努力争取</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LzQuMC9kZWVkLnpo"><img src="/images/cc-by.svg" alt="Creative Commons"></span>
+             </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhvdXhzLnRvcC8yMDE5LzA1LzEyL2hleG8tZ2l0aHViLSVFNiU5MCVBRCVFNSVCQiVCQSVFNSU4RCU5QSVFNSVBRSVBMi8=" title="https://www.zhouxs.top/2019/05/12/hexo-github-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">github的文章</span>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-JVM的介绍"><span class="nav-number">1.</span> <span class="nav-text">1.JVM的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-JVM的作用"><span class="nav-number">2.</span> <span class="nav-text">2.JVM的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-JVM图解"><span class="nav-number">3.</span> <span class="nav-text">3.JVM图解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Javac编译器"><span class="nav-number">4.</span> <span class="nav-text">4.Javac编译器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-类加载器"><span class="nav-number">5.</span> <span class="nav-text">5.类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载介绍"><span class="nav-number">5.1.</span> <span class="nav-text">类加载介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载器作用"><span class="nav-number">5.2.</span> <span class="nav-text">类加载器作用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#启动类加载器"><span class="nav-number">5.2.1.</span> <span class="nav-text">启动类加载器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展类加载器"><span class="nav-number">5.2.2.</span> <span class="nav-text">扩展类加载器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用程序类加载器"><span class="nav-number">5.2.3.</span> <span class="nav-text">应用程序类加载器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义类加载器"><span class="nav-number">5.2.4.</span> <span class="nav-text">自定义类加载器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-类加载器的时机"><span class="nav-number">5.3.</span> <span class="nav-text">3.类加载器的时机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-类加载器的机制-双亲委派模型"><span class="nav-number">5.4.</span> <span class="nav-text">4.类加载器的机制 - 双亲委派模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-类加载的方式"><span class="nav-number">5.5.</span> <span class="nav-text">5.类加载的方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-类加载的生命周期"><span class="nav-number">5.6.</span> <span class="nav-text">6.类加载的生命周期:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-运行时数据区"><span class="nav-number">6.</span> <span class="nav-text">6.运行时数据区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1虚拟机栈"><span class="nav-number">6.1.</span> <span class="nav-text">6.1虚拟机栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2本地方法栈"><span class="nav-number">6.2.</span> <span class="nav-text">6.2本地方法栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3程序计数器"><span class="nav-number">6.3.</span> <span class="nav-text">6.3程序计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4方法区-元空间"><span class="nav-number">6.4.</span> <span class="nav-text">6.4方法区(元空间)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5堆"><span class="nav-number">6.5.</span> <span class="nav-text">6.5堆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-执行引擎"><span class="nav-number">7.</span> <span class="nav-text">7.执行引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-本地方法"><span class="nav-number">8.</span> <span class="nav-text">8.本地方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-本地方法库"><span class="nav-number">8.1.</span> <span class="nav-text">9.本地方法库</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">周宏伟</span>
+  
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">166k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    
+    <span title="站点阅读时长">2:31</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+  
+    
+    
+      
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="//cdn.jsdelivr.net/npm/canvas-nest.js@1.0.1/dist/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/jquery_lazyload@1.9.3/jquery.lazyload.min.js"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/fancybox@3.0.0/dist/js/jquery.fancybox.pack.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1.1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+  <script src="/js/js.cookie.js?v=7.1.0"></script>
+  <script src="/js/scroll-cookie.js?v=7.1.0"></script>
+
+
+  
+  <script src="/js/exturl.js?v=7.1.0"></script>
+
+
+  
+  
+  
+    
+  
+
+  
+
+  
+  
+  
+
+
+  
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1.0.0/bookmark.min.js"></script>
+  <script>
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
