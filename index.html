@@ -783,7 +783,7 @@
                 
               
 
-              <time title="创建时间：2020-06-19 06:53:24 / 修改时间：11:25:53" itemprop="dateCreated datePublished" datetime="2020-06-19T06:53:24+08:00">2020-06-19</time>
+              <time title="创建时间：2020-06-19 06:53:24 / 修改时间：11:37:39" itemprop="dateCreated datePublished" datetime="2020-06-19T06:53:24+08:00">2020-06-19</time>
             
 
             
@@ -881,7 +881,7 @@
 <p>java是一门高级语言,符合人们的习惯,但不符合电话的理解,因此需要在硬件上进行转化</p>
 <p>就是将.java文件转成Java字节码文件(.class),由JVM进行解析和执行.</p>
 </blockquote>
-<h2 id="3-JVM图解"><a href="#3-JVM图解" class="headerlink" title="3.JVM图解"></a>3.JVM图解</h2><p><img src="/2020/06/19/Java高级-JVM/Hexo\source\_posts\Java高级-JVM\Java_JVM.jpg" alt></p>
+<h2 id="3-JVM图解"><a href="#3-JVM图解" class="headerlink" title="3.JVM图解"></a>3.JVM图解</h2><p><img src="/2020/06/19/Java高级-JVM/Java_JVM.jpg" alt></p>
 <blockquote>
 <p>接下来就按着图解来进行拆分讲解</p>
 </blockquote>
@@ -915,7 +915,7 @@
 <p>Server Comlier: 根据性能优化,编译质量好,耗时长</p>
 <p>虽然有两种模式,但是JVM提供了三种运行模式: mixed mode (默认,混合),Interpreted Mode(解释),Compiled Mode(编译)</p>
 </blockquote>
-<p><img src="/2020/06/19/Java高级-JVM/Hexo\source\_posts\Java高级-JVM\javaversion.png" alt></p>
+<p><img src="/2020/06/19/Java高级-JVM/javaversion.png" alt></p>
 <ol start="3">
 <li><p>从源码到机器码:</p>
 <p>AOT编译器 (JDK9新特性) :在程序执行前生成 Java 方法的本地代码，以便在程序运行时直接使用本地代码,静态编译</p>
@@ -981,12 +981,12 @@
 </li>
 <li><p><strong>方法出口</strong>：储存返回地址</p>
 <pre><code>退出方法的方式
-    正常完成出口
-    异常完成出口，不会返回值，返回地址通过异常处理器表来确定
-退出过程
-    1）恢复上层方法的局部变量表和操作数栈
-    2）把返回值压入调用者的栈帧的操作数栈中
-    3）调整PC计数器指向下一条指令
+       正常完成出口
+       异常完成出口，不会返回值，返回地址通过异常处理器表来确定
+   退出过程
+       1）恢复上层方法的局部变量表和操作数栈
+       2）把返回值压入调用者的栈帧的操作数栈中
+       3）调整PC计数器指向下一条指令
 </code></pre></li>
 </ol>
 <h3 id="6-2本地方法栈"><a href="#6-2本地方法栈" class="headerlink" title="6.2本地方法栈"></a>6.2本地方法栈</h3><blockquote>
