@@ -131,7 +131,7 @@
 <meta property="og:description" content="总框架 所有集合类都位于java.util包下。Java的集合类主要由两个接口派生而出：Collection和Map，Collection和Map是Java集合框架的根接口，这两个接口又包含了一些子接口或实现类">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://oldzhoua.github.io/2020/06/12/Java中级-集合/1.png">
-<meta property="og:updated_time" content="2020-06-21T02:45:46.733Z">
+<meta property="og:updated_time" content="2020-08-05T04:57:40.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中级_集合">
 <meta name="twitter:description" content="总框架 所有集合类都位于java.util包下。Java的集合类主要由两个接口派生而出：Collection和Map，Collection和Map是Java集合框架的根接口，这两个接口又包含了一些子接口或实现类">
@@ -441,7 +441,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">29</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">31</span></a>
 
   </li>
         
@@ -460,7 +460,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">13</span></a>
 
   </li>
         
@@ -479,7 +479,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
 
   </li>
 
@@ -622,7 +622,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-21 10:45:46" itemprop="dateModified" datetime="2020-06-21T10:45:46+08:00">2020-06-21</time>
+                <time title="修改时间：2020-08-05 12:57:40" itemprop="dateModified" datetime="2020-08-05T12:57:40+08:00">2020-08-05</time>
               
             
           </span>
@@ -682,7 +682,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">7.9k</span>
+                <span title="本文字数">8.3k</span>
               
 
               
@@ -696,7 +696,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">7 分钟</span>
+                <span title="阅读时长">8 分钟</span>
               
             </div>
           
@@ -750,6 +750,9 @@
 </ul>
 <p>这一点要看实际情况的。<strong>若只对单条数据插入或删除，ArrayList的速度反而优于LinkedList。</strong>但若是批量随机的插入删除数据，LinkedList的速度大大优于ArrayList. 因为ArrayList每插入一条数据，要移动插入点及之后的所有数据。</p>
 </blockquote>
+<p>1、寻址操作次数链表要多一些。数组只需对 [基地址+元素大小*k] 就能找到第k+1个元素的地址，对其取地址就能获得该元素。链表要获得第k个元素，首先要在其第k-1个元素寻找到其next指针偏移，再将next指针作为地址获得值，这样就要从第一个元素找起，多了多步寻址操作，当数据量大且其它操作较少时，这就有差距了。</p>
+<p>该回答源自：<span class="exturl" data-url="aHR0cDovL3RpZWJhLmJhaWR1LmNvbS9wLzUwNjkxMjA0Mzc=" title="http://tieba.baidu.com/p/5069120437">http://tieba.baidu.com/p/5069120437<i class="fa fa-external-link"></i></span></p>
+<p>2、CPU缓存会把一片连续的内存空间读入，因为数组结构是连续的内存地址，所以数组全部或者部分元素被连续存在CPU缓存里面，平均读取每个元素的时间只要3个CPU时钟周期。  而链表的节点是分散在堆空间里面的，这时候CPU缓存帮不上忙，只能是去读取内存，平均读取时间需要100个CPU时钟周期。这样算下来，数组访问的速度比链表快33倍！ （这里只是介绍概念，具体的数字因CPU而异）。</p>
 <h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><blockquote>
 <p><strong>Set是一个不允许有重复元素的集合</strong>,无序，Set最多有一个null元素。</p>
 <p>虽然Set中元素没有顺序，但是元素在set中的位置是由该元素的HashCode决定的，其具体位置其实是固定的。</p>
@@ -1095,7 +1098,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1136,7 +1139,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1211,7 +1216,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1315,7 +1324,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">179k</span>
+    <span title="站点总字数">186k</span>
   
 
   
@@ -1326,7 +1335,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:43</span>
+    <span title="站点阅读时长">2:49</span>
   
 </div>
 

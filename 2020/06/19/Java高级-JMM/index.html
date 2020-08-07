@@ -133,7 +133,7 @@
 <meta property="og:image" content="http://oldzhoua.github.io/2020/06/19/Java高级-JMM/jmm">
 <meta property="og:image" content="http://oldzhoua.github.io/2020/06/19/Java高级-JMM/atom">
 <meta property="og:image" content="http://oldzhoua.github.io/2020/06/19/Java高级-JMM/ncpz">
-<meta property="og:updated_time" content="2020-06-21T02:45:12.913Z">
+<meta property="og:updated_time" content="2020-06-21T06:47:44.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java高级-JMM">
 <meta name="twitter:description" content="JMM介绍 JMM即为JAVA 内存模型（java memory model） JMM定义了程序中各个共享变量的访问规则,即在虚拟机中将变量存储到内存和从内存读取变量这样的底层细节  JMM作用  主内存 - 工作内存 - 线程之间的关系 如果非要对应起来，主内存对应的是Java堆中的对象实例部分，工作内存对应的是栈中的部分区域，从更底层的来说，主内存对应的是硬件的物理内存，工作内存对应的是寄存器">
@@ -443,7 +443,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">29</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">31</span></a>
 
   </li>
         
@@ -462,7 +462,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">13</span></a>
 
   </li>
         
@@ -481,7 +481,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">29</span></a>
 
   </li>
 
@@ -624,7 +624,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-21 10:45:12" itemprop="dateModified" datetime="2020-06-21T10:45:12+08:00">2020-06-21</time>
+                <time title="修改时间：2020-06-21 14:47:44" itemprop="dateModified" datetime="2020-06-21T14:47:44+08:00">2020-06-21</time>
               
             
           </span>
@@ -677,7 +677,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8.8k</span>
+                <span title="本文字数">9.6k</span>
               
 
               
@@ -691,7 +691,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">8 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -722,6 +722,44 @@
 <p>缓存一致性协议,是用于定义数据读写的规则 </p>
 </blockquote>
 <a id="more"></a>
+<p><strong>缓存一致性 ( MESI ) 协议</strong></p>
+<blockquote>
+<p>缓存一致性协议发展背景<br>现在的CPU基本都是多核CPU，服务器更是提供了多CPU的支持，而每个核心也都有自己独立的缓存，当多个核心同时操作多个线程对同一个数据进行更新时，如果核心2在核心1还未将更新的数据刷回内存之前读取了数据，并进行操作，就会造成程序的执行结果造成随机性的影响，这对于我们来说是无法容忍的。</p>
+<p>而总线加锁是对整个内存进行加锁，在一个核心对一个数据进行修改的过程中，其他的核心也无法修改内存中的其他数据，这样对导致CPU处理性能严重下降。</p>
+<p>缓存一致性协议提供了一种高效的内存数据管理方案，它只会对单个缓存行（缓存行是缓存中数据存储的基本单元）的数据进行加锁，不会影响到内存中其他数据的读写。</p>
+</blockquote>
+<p>MESI协议</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>描述</th>
+<th>监听任务</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M 修改（Modify）</td>
+<td>该缓存行有效，数据被修改了，和内存中的数据不一致，数据只存在于本缓存行中</td>
+<td>缓存行必须时刻监听所有试图读该缓存行相对应的内存的操作，其他缓存须在本缓存行写回内存并将状态置为E之后才能操作该缓存行对应的内存数据</td>
+</tr>
+<tr>
+<td>E 独享、互斥（Exclusive）</td>
+<td>该缓存行有效，数据和内存中的数据一致，数据只存在于本缓存行中</td>
+<td>缓存行必须监听其他缓存读主内存中该缓存行相对应的内存的操作，一旦有这种操作，该缓存行需要变成S状态</td>
+</tr>
+<tr>
+<td>S 共享（Shared）</td>
+<td>该缓存行有效，数据和内存中的数据一致，数据同时存在于其他缓存中</td>
+<td>缓存行必须监听其他缓存是该缓存行无效或者独享该缓存行的请求，并将该缓存行置为I状态</td>
+</tr>
+<tr>
+<td>I 无效（Invalid）</td>
+<td>该缓存行数据无效</td>
+<td>无</td>
+</tr>
+</tbody>
+</table>
 <p><strong>JMM三大特性</strong></p>
 <ol>
 <li>可见性</li>
@@ -780,6 +818,10 @@
 <p>volatile和synchronized可以保证程序的有序性</p>
 </blockquote>
 <p><strong>解决JMM共享对象的可见性问题: ==使用volatile==</strong></p>
+<blockquote>
+<p>为什么要用volatile而不用synchronized?</p>
+<p>个人理解: volatile 可以修饰变量, 共享变量,保证了变量在所有的线程中的可见性;而synchronized不能修饰变量</p>
+</blockquote>
 <h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><blockquote>
 <p>Java内置关键字</p>
 <p>volatile 是Java虚拟机提供的轻量级的同步机制</p>
@@ -833,7 +875,8 @@
 <p>就是程序可以不是按你写代码的程序来跑的;</p>
 </blockquote>
 <p><strong>volatile可以禁止指令重排</strong></p>
-<p>​    利用:<strong>内存屏障,CPU指令</strong></p>
+<p>​    利用:<strong>内存屏障</strong>,是一个CPU指令</p>
+<p>内存屏障特点:</p>
 <ol>
 <li>保证特定操作的执行顺序;</li>
 <li>保证某些变量的可见性 ( 利用volatile特性) ;</li>
@@ -865,7 +908,7 @@
 <h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><blockquote>
 <p>比较当前工作内存中的值跟主内存中的值做比较</p>
 <p>如果这个值是期望值,则继续执行操作</p>
-<p>否则一直循环, -&gt; 从而导致了 <strong>ABA</strong>问题 (中间操作不可见)</p>
+<p>否则一直循环, 也会导致另一个 <strong>ABA</strong>问题 (中间操作不可见)</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	AtomicInteger atomicInteger = <span class="keyword">new</span> AtomicInteger(<span class="number">10</span>);</span><br><span class="line">	<span class="comment">// CAS compareAndSet 比较并交换</span></span><br><span class="line">	System.out.println(atomicInteger.compareAndSet(<span class="number">10</span>, <span class="number">20</span>));</span><br><span class="line">	System.out.println(atomicInteger.compareAndSet(<span class="number">20</span>, <span class="number">20</span>));</span><br><span class="line">	System.out.println(atomicInteger.compareAndSet(<span class="number">21</span>, <span class="number">20</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
@@ -878,11 +921,11 @@
 <p>进入 vlueOffset</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// setup to use Unsafe.compareAndSwapInt for updates</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Unsafe unsafe = Unsafe.getUnsafe();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> valueOffset;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        valueOffset = unsafe.objectFieldOffset  <span class="comment">// unsafes类是java可以通过这个类来操作内存</span></span><br><span class="line">            (AtomicInteger.class.getDeclaredField(<span class="string">"value"</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception ex) &#123; <span class="keyword">throw</span> <span class="keyword">new</span> Error(ex); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Creates a new AtomicInteger with the given initial value.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> initialValue the initial value</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AtomicInteger</span><span class="params">(<span class="keyword">int</span> initialValue)</span> </span>&#123;</span><br><span class="line">    value = initialValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>compareAndSet利用JNI来完成CPU指令的操作</p>
+<p><strong>compareAndSet</strong>利用<strong>JNI</strong>来完成CPU指令的操作</p>
 <p>CAS就先到这里了</p>
 </blockquote>
 <h2 id="ABA"><a href="#ABA" class="headerlink" title="ABA"></a><strong>ABA</strong></h2><blockquote>
-<p>丢失了中间的操作</p>
+<p>丢失了中间的操作 </p>
 <p>由于ABA问题带来的隐患，各种乐观锁的实现中通常都会用版本戳version来对记录或对象标记，避免并发操作带来的问题</p>
 </blockquote>
 <p>使用原子引用解决</p>
@@ -1040,6 +1083,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/08/05/Spring系列一-知识点/" rel="prev" title="Spring系列一.知识点">
+                Spring系列一.知识点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -1109,7 +1156,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1150,7 +1197,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1225,7 +1274,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1329,7 +1382,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">179k</span>
+    <span title="站点总字数">186k</span>
   
 
   
@@ -1340,7 +1393,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">2:43</span>
+    <span title="站点阅读时长">2:49</span>
   
 </div>
 
